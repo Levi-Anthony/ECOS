@@ -33,16 +33,18 @@ Determine whether this is a **warm start** or **cold start**:
   like `[MODE]`, `[DATE]`, empty bullet points. This means no prior session
   wrote state. That's fine — BRAIN still has context.
 
-### Step 2 — Query BRAIN (three searches, in parallel)
+### Step 2 — Query BRAIN (five calls, in parallel)
 
-Fire all three `search_thoughts` calls in the same tool-use turn. Do not
-wait for one before starting the next. Use threshold 0.38 for all three.
+Fire all five calls in the same tool-use turn. Do not wait for one before
+starting the next. Use threshold 0.38 for the four `search_thoughts` calls.
 
-| Query | Purpose |
-|---|---|
-| `active threads open loops recent decisions` | Recover live state — what's in motion, what's unresolved |
-| `locked architecture decisions ECOS BRAIN SIGMA` | Load structural constraints — what's been decided and must not be revisited |
-| Domain-specific query (see below) | Deepen context on the current focus area |
+| Call | Query / Parameters | Purpose |
+|---|---|---|
+| `search_thoughts` | `active threads open loops recent decisions` | Recover live state — what's in motion, what's unresolved |
+| `search_thoughts` | `locked architecture decisions ECOS BRAIN SIGMA` | Load structural constraints — what's been decided and must not be revisited |
+| `search_thoughts` | Domain-specific query (see below) | Deepen context on the current focus area |
+| `search_thoughts` | `task list pending next Claude Code session delegated actions` | Surface explicitly flagged task handoffs — missed by the active-threads query |
+| `list_thoughts` | `days: 3, limit: 20` | Recency sweep — surfaces recent captures regardless of semantic content or tagging |
 
 **Choosing the domain query:**
 
@@ -54,8 +56,14 @@ wait for one before starting the next. Use threshold 0.38 for all three.
 
 ### Step 3 — Synthesize and Output
 
-After all three BRAIN queries return, synthesize everything into this exact
-output format. Be concise — this is a launchpad, not a briefing document.
+After all five calls return, synthesize everything into this exact output
+format. Be concise — this is a launchpad, not a briefing document.
+
+**Recency sweep:** Scan the `list_thoughts` results first. Any entry captured
+in the last 48 hours gets explicit attention — surface it even if no semantic
+query hit it. Entries from 48h–3 days ago fold into synthesis only if clearly
+relevant to the current session focus. The recency sweep is the fallback for
+anything semantic search misses.
 
 ```
 ## ECOS Boot
