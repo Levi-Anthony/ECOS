@@ -49,12 +49,20 @@ is deprecated.
 
 ## Capture Protocol
 
-1. Apply C1 to each candidate. Split at fault lines if multiple centers exist.
-2. Apply C3 to each result. Flag entries that would mislead without a sibling.
-3. Propose with a one-line rationale per entry (which criterion was non-obvious
-   and why it passes). Never capture unilaterally.
-4. After approval: capture, then present a skip list with reasons for any
+Atomization is upstream of proposal — enforce this order:
+
+1. **Draft raw** — write candidate entries as they naturally surface.
+2. **Split to atomic** — apply the split test: would this retrieve well on two
+   distinct semantic queries? If yes, it's two entries. Split before proposing.
+3. **Verify C3 per fragment** — each fragment must be semantically complete in
+   isolation. Would it mislead without its sibling? Rewrite or drop if so.
+4. **Propose** with a one-line rationale per entry (which criterion was
+   non-obvious and why it passes). Never capture unilaterally.
+5. **After approval:** capture, then present a skip list with reasons for any
    entries not captured.
+
+Thematic drafting produces natural-feeling units that frequently violate C1.
+Catch them at step 2 — do not let C1 violations surface to the proposal stage.
 
 ## BRAIN Architecture
 
@@ -77,14 +85,22 @@ entries contaminate domain-specific queries. Tag at capture time, not retroactiv
 
 ## Update and Delete
 
-No update or delete MCP tools exist in Open Brain yet. To correct or remove
-an entry: Supabase dashboard → Table Editor → thoughts → find by content →
-edit or delete directly. This is a manual process.
+No update or delete MCP tools exist in Open Brain. Use the REST workflow
+(3-step: read → archive → patch):
 
-Consequence for ECOS: reference file drift is a real risk. When a domain entry
-in BRAIN becomes stale (board relationships, wave status, etc.), the correction
-requires a manual Supabase edit. Flag stale entries explicitly rather than
-silently working around them.
+1. **Read** — fetch the entry by ID from the thoughts table to get current content.
+2. **Archive** — write the current version to thought_history with
+   `archived_reason: 'superseded'` and `original_thought_id: [ID]`.
+3. **Patch** — update the thoughts table entry with the corrected content.
+
+Credentials: `~/ecos/.claude/rules/supabase.env`. Supabase REST endpoint:
+`{SUPABASE_URL}/rest/v1/thoughts?id=eq.{id}` (PATCH) and
+`{SUPABASE_URL}/rest/v1/thought_history` (POST for archive step).
+
+For deletions: archive to thought_history with `archived_reason: 'deleted'`,
+then delete from thoughts table. Never hard-delete without archiving first.
+
+Flag stale entries explicitly rather than silently working around them.
 
 ## Gotchas
 
