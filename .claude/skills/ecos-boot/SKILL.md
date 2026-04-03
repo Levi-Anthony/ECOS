@@ -45,6 +45,7 @@ starting the next. Use threshold 0.38 for the four `search_thoughts` calls.
 | `search_thoughts` | Domain-specific query (see below) | Deepen context on the current focus area |
 | `search_thoughts` | `task list pending next Claude Code session delegated actions` | Surface explicitly flagged task handoffs — missed by the active-threads query |
 | `list_thoughts` | `days: 3, limit: 20` | Recency sweep — surfaces recent captures regardless of semantic content or tagging |
+| `search_thoughts` | `TASTE preference all sessions universal` | Load universal behavioral constraints active every session |
 
 **Choosing the domain query:**
 
@@ -58,6 +59,8 @@ starting the next. Use threshold 0.38 for the four `search_thoughts` calls.
 
 After all five calls return, synthesize everything into this exact output
 format. Be concise — this is a launchpad, not a briefing document.
+
+**Taste:** Scan TASTE:: entries from the universal query. These are active behavioral constraints for this session — not context, not background. Let them shape how you engage, not just what you produce.
 
 **Recency sweep:** Scan the `list_thoughts` results first. Any entry captured
 in the last 48 hours gets explicit attention — surface it even if no semantic

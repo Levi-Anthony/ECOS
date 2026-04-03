@@ -11,6 +11,10 @@ disable-model-invocation: false
 
 # ECOS Architecture Reference
 
+## Taste
+
+Run at skill load: `search_thoughts("TASTE system design architecture ECOS", threshold: 0.38)`. Retrieved preferences are active constraints for this session, not background context.
+
 ## Layer Map
 
 ```

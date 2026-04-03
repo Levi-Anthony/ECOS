@@ -6,6 +6,10 @@ description: >
 
 # Neil Outreach Reference
 
+## Taste
+
+Run at skill load: `search_thoughts("TASTE neil outreach writing voice", threshold: 0.38)`. Retrieved preferences are active constraints for this session, not background context.
+
 ## Role
 
 Levi is operational and strategic lead for Neil's book promotion campaign.

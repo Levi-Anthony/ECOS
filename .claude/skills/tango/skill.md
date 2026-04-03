@@ -6,6 +6,10 @@ description: >
 
 # Tango Pedagogy Reference
 
+## Taste
+
+Run at skill load: `search_thoughts("TASTE tango pedagogy teaching", threshold: 0.38)`. Retrieved preferences are active constraints for this session, not background context.
+
 ## Brand
 
 ECTango / Effortless Connection Tango. effortlessconnection.com.

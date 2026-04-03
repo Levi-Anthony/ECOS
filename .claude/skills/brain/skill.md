@@ -6,6 +6,10 @@ description: >
 
 # BRAIN Reference
 
+## Taste
+
+Run at skill load: `search_thoughts("TASTE capture protocol brain BRAIN", threshold: 0.38)`. Retrieved preferences are active constraints for this session, not background context.
+
 BRAIN (Brain Retrieval Associative Integration Node) is ECOS's semantic memory
 layer. It answers "what did I think about X" — not "what is currently active."
 Live state lives in the State Document, not BRAIN.
