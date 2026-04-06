@@ -18,20 +18,39 @@ action as fast as possible.
 
 ## Execution Steps
 
-### Step 1 — Read State Documents
+### Step 1 — Read HANDOFF.md (three-path resolution)
 
-Read in parallel:
-- `~/ecos/HANDOFF.md` — agent state layer (mode, open loops, decisions)
-- Last 8 entries of `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ECOS/Operations/PULSE_LOG.md` — Levi's hourly check-ins since last session
-- `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ECOS/PURPOSE.md` — quarterly anchor (if it exists; skip silently if not yet written)
+Try paths in order — stop at first success:
+
+**Path A — Claude Code (file tools available):**
+Read `~/ecos/HANDOFF.md` directly via Read tool. This is a symlink to the
+vault canonical location.
+
+**Path B — Mobile / any client (GitMCP available):**
+Read `HANDOFF.md` from `github.com/Levi-Anthony/ECOS` via GitHub MCP tool.
+Requires GitMCP to be configured in the current client's MCP settings.
+
+**Path C — Fallback (neither available):**
+BRAIN-only cold start. Flag explicitly in boot output:
+`"HANDOFF unavailable — cold start on BRAIN."`
+
+For **PULSE_LOG** and **PURPOSE.md**: attempt Read tool only. If unavailable
+(mobile), skip silently — flag `"PULSE_LOG unavailable (mobile)"` in boot
+output. Do not block boot.
+
+For **ORIENT.md write** (post-boot): attempt Write tool. If unavailable,
+output the ORIENT block as formatted text in the boot response instead.
+Flag: `"ORIENT not written (mobile) — displayed below."`
+
+---
 
 Determine whether this is a **warm start** or **cold start**:
 
 - **Warm start**: HANDOFF.md has real content — a mode, open loops, decisions,
   a next-session primer. Extract the current focus domain and any open loops.
-- **Cold start**: HANDOFF.md is blank or still contains placeholder values
-  like `[MODE]`, `[DATE]`, empty bullet points. This means no prior session
-  wrote state. That's fine — BRAIN still has context.
+- **Cold start**: HANDOFF.md is blank, contains placeholder values like
+  `[MODE]`, `[DATE]`, or is unavailable (Path C). BRAIN still has context —
+  proceed on BRAIN alone and flag the gap.
 
 ### Step 2 — Query BRAIN (five calls, in parallel)
 

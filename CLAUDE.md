@@ -46,7 +46,7 @@ At PARK or session end: write HANDOFF.md and update ORIENT.md.
 
 - BRAIN is always queried, never assumed
 - HANDOFF.md is written at every session close — no exceptions
-- ORIENT.md is written at every boot and updated at every close (Obsidian vault)
+- ORIENT.md is written at every boot when file tools are available; output as text on mobile. Updated at every close.
 - PULSE_LOG.md is read at boot (last 8 entries) — Levi's hourly check-ins
 - Captures are proposed before executed — never unilateral
 - Structural decisions are proposed before executed — never unilateral

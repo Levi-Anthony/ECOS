@@ -41,8 +41,10 @@ Before proposing, enforce atomization upstream in this exact order:
    distinct semantic queries? If yes, it's two entries. Split before proceeding.
 3. **Verify C3 per fragment** — each fragment must be semantically complete in
    isolation. Would it mislead without its sibling? Rewrite or drop if so.
-4. **Then propose** — only atomic, C3-passing entries surface to Levi.
-5. Wait for approval before capturing anything.
+4. **Propose** with a one-line rationale per entry (which criterion was
+   non-obvious and why it passes). Never capture unilaterally.
+5. **After approval:** capture, then present a skip list with reasons for any
+   entries not captured.
 
 Thematic drafting produces natural-feeling units that frequently violate C1.
 Do not let C1 violations surface to the proposal stage — catch them here.
@@ -119,7 +121,23 @@ Every field must have real content or an explicit "none." No placeholder
 brackets. No empty bullets. The next boot will read this file and a blank
 field means lost state.
 
-### Step 7 — Confirm close
+### Step 7 — Commit and push HANDOFF.md
+
+After writing HANDOFF.md, commit and push it to the vault repo so mobile boot
+can read it via GitMCP:
+
+```
+git -C "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ECOS" \
+  add HANDOFF.md && \
+  git commit -m "session close $(date +%Y-%m-%d)" && \
+  git push
+```
+
+If push fails (offline, auth issue): note the failure in the confirm output.
+Mobile boot will cold-start on BRAIN alone. Do not block session close on a
+push failure — HANDOFF.md is still written locally and symlinked.
+
+### Step 8 — Confirm close
 
 After writing HANDOFF.md, confirm to Levi:
 

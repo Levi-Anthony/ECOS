@@ -243,7 +243,7 @@ Silence means success. Noise means something happened. This is the invariant tha
 
 | Decision | Options | Notes |
 |---|---|---|
-| Embedding API for Codex | OpenAI text-embedding-3-small or text-embedding-3-large | **PROJECT BLOCKER** — resolve before threshold calibration begins. Existing BRAIN embeddings are vector(1536), consistent with text-embedding-ada-002 or text-embedding-3-small. Codex must use the same model. Cross-model cosine distances are not comparable. |
+| Embedding API for Codex | **RESOLVED: `openai/text-embedding-3-small` via OpenRouter** | Confirmed 2026-04-05 from Open Brain MCP source (`supabase/functions/open-brain-mcp/index.ts` line 23). All existing BRAIN entries were embedded with this model. Codex must use the same model and endpoint. Cross-model cosine distances are not comparable — do not substitute ada-002 or 3-large. |
 | Exception queue mechanism | HANDOFF.md section vs. Supabase status field on thoughts | HANDOFF.md is simpler; Supabase field is queryable across sessions |
 | Batch review interface | CLI output vs. structured JSON vs. markdown table | Needs to be readable in Claude Code at batch close |
 
