@@ -1,35 +1,36 @@
 # ORIENT
-*Sunday, April 5, 2026 — generated at boot*
+*Sunday, April 6, 2026 — updated at session close*
 
-**Mode:** WRITE
+**Mode:** PARK
 
-**Today's focus:** PURPOSE.md — quarterly anchor
+**Today's focus:** Mobile boot architecture — GitMCP + BRAIN hybrid
 
 **Open loops (don't let these go cold):**
-- PURPOSE.md — not written; deferred 3+ sessions; pure writing, no prereqs
-- ecos-close atomization amendment — skill file edit, still pending
-- BRAIN embedding model confirmation — project blocker for corpus cleanup
+- Mobile boot eval plan — 6 items, not yet built; proof-of-concept only
+- HANDOFF.md sync to ECOS Project unconfirmed — root cause unknown
+- PURPOSE.md — still unwritten; deferred every session
 
-**Highest leverage:** Write PURPOSE.md — unlocks quarterly anchor for all planning domains
+**Highest leverage:** Build mobile boot eval plan + fix HANDOFF.md Project sync before calling mobile boot validated
 
-**Constraints:** Two Claude Code tasks from April 3 still pending; corpus cleanup hard-blocked until embedding model confirmed; ECTango week 6 today
+**Constraints:** PAT exposed in session — regenerate before next session; Claude Desktop needs restart to pick up GITHUB_PERSONAL_ACCESS_TOKEN
 
 ---
 
 ## MOMENTUM
 
 **In motion:**
-- BRAIN corpus cleanup — spec v1.1 ready, execution blocked on embedding model
-- Taste harvest protocol — captured to BRAIN, canonical Obsidian doc not yet written
+- Mobile boot architecture — implemented, not validated; eval plan is next step
+- BRAIN corpus cleanup — fully unblocked (embedding model confirmed: text-embedding-3-small)
 
 **Closes this week:**
-- PURPOSE.md (no remaining blockers — pure writing)
-- ecos-close atomization amendment (quick skill file edit)
+- Mobile boot eval plan (if next session focuses here)
+- PURPOSE.md (no blockers — pure writing, any session)
 
 **Stale:**
 - Neil Wave 2 futurism/tech-prediction list — open since March 21 call
 - Dispatcher routing table — identified March 25, not built
-- GitHub MCP setup — unblocked since April 3, still pending
+- Obsidian vault restructure — flagged, not started
 
 **Win to protect:**
-- Skill files versioned in canonical vault repo via symlinks — don't let ~/ecos symlinks break
+- Vault committed + pushed (bacbe26) — all session work versioned
+- BRAIN corpus cleanup unblocked — don't let it drift back into limbo
