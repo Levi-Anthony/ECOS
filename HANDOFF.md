@@ -9,38 +9,37 @@
 PARK
 
 ## Open Loops
-- Vercel deployment — dashboard code at apps/crm-dashboard, needs GitHub push + Vercel project setup + env vars (NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY), root dir = apps/crm-dashboard
-- ecos-crm MCP not wired into Claude Code — connect command in DEPLOY.md, key in ~/.claude.json x-brain-key
-- F3 Boot protocol fix — CLAUDE.md global load reliability; blocks N2 Heartbeat
+- IT MCP tools smoke test not done in-session — verify log_service_call → get_unbilled_work → create_billing_entry via Claude, confirm rows in Supabase Dashboard
+- BRAIN browser smoke test not done — open /brain, filter, click thought, copy ID, run link_thought_to_contact
+- PURPOSE.md — still unwritten; blocks N2 Heartbeat chain
+- F3 Boot protocol fix — still pending; blocks N2 Heartbeat
 - N2 Heartbeat — blocked on F3 + PURPOSE.md
-- PURPOSE.md — still unwritten; must exist before Heartbeat is built
 - Apple Shortcuts N3/N4 — specs written, not built on phone
-- Neil Wave 2 futurism list — stale since March 21
+- Neil Wave 2 futurism list — stale since March 21, staleness risk rising
 - Sprint 3c dedup audit — lowest priority, unlocked
 - ~5 TTC entries from April 10 still tagged immediate — minor cleanup
 - TTC board context stale — handle in its own chat
+- RLS on dashboard — deferred Sprint 5
+- contact_roles junction table — deferred
 
 ## Dispatcher Queue
-- Two commands complete the CRM stack: (1) push repo + connect Vercel, (2) wire ecos-crm MCP. Both are mechanical — no design work needed. Do these before any new feature work.
+- Sprint 4 fully deployed. Next: smoke test IT tools + BRAIN browser (mechanical verification). Then PURPOSE.md or Neil Wave 2 — whichever Levi names first.
 
 ## Decisions Made This Session
-- CRM/GUI phase shipped: ecos-crm-mcp (12 tools, live at lqbrzoicorehwidkdhoi) + Vercel dashboard (3 views, builds clean)
-- ECOS_USER_ID = "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11" — fixed UUID for all CRM tables (no Supabase auth users exist)
-- taste_preferences Branch A confirmed (table was absent from Supabase; new schema created)
-- pulse_log live schema is a pulse diary (state/now_doing/record columns), not a user-keyed event log — snapshot migration was a no-op
-- live professional_contacts has extra columns: linkedin_url, how_we_met, community_role, music_role, outreach_wave, billing_notes
-- contact_interactions: summary is NOT NULL, notes→follow_up_notes+follow_up_needed, user_id is UUID
-- opportunities: close_date→expected_close_date, user_id is UUID
-- relationship_domain and interaction_type CHECK constraints expanded via migrations (20260416000001, 20260416000002)
-- Dashboard v1: read-only, RLS deferred Sprint 4, secure at Vercel platform level
-- contact_roles junction table deferred Sprint 4 (accepted migration debt)
-- BRAIN↔CRM bridge live: thought_links JSONB[] on contacts, link_thought_to_contact + get_linked_thoughts
+- Sprint 4 shipped: BRAIN Browser (/brain, /brain/[id]) + IT Client Tracker (/it, /it/[id]) added to ECOS Dashboard
+- BRAIN browser is read-only by design — no capture form (single-funnel rule, March 2026)
+- IT clients = professional_contacts WHERE relationship_domain='it', no separate table
+- create_billing_entry_tx Postgres RPC handles billing atomicity — INSERT + UPDATE billed=true in single transaction
+- Nav consolidated: ECOS · Contacts · BRAIN · IT · Follow-ups
+- ecos-crm-mcp redeployed at 17 tools (12 CRM + 5 IT)
+- Migration 20260416000003_it_client_tracker.sql applied to production
+- Vercel prod deploy: https://crm-dashboard-smoky-two.vercel.app
 
 ## Captures Pending
-none — 6 captures fired and confirmed at session close
+none — 4 captures fired and confirmed at session close
 
 ## Next Session Primer
-Deploy the Vercel dashboard and wire ecos-crm into Claude Code — two mechanical steps, CRM fully operational.
+Sprint 4 fully deployed. First action: smoke test IT MCP tools (log a service call, pull unbilled, create billing entry). Then choose PURPOSE.md vs Neil Wave 2.
 
 ## Pending Improvements
 2026-04-13 | Add optional "Infrastructure Reference" section to HANDOFF.md template in ecos-close skill (middleware URL, deploy command, project ref) | pending
