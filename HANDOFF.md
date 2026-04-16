@@ -1,7 +1,7 @@
 # HANDOFF.md
 *ECOS live state document — v0.1*
 *Written by Claude at session close. Read by Claude at session start before querying BRAIN.*
-*Delete entries older than 3 sessions. Last updated: 2026-04-15*
+*Delete entries older than 3 sessions. Last updated: 2026-04-16*
 
 ---
 
@@ -9,36 +9,42 @@
 PARK
 
 ## Open Loops
-- CRM/GUI phase — next major build; Nate's docs to be shared at session start before any design work
-- Sprint 3c: dedup audit — lowest priority, now unlocked since backfill is complete
-- Apple Shortcuts N3/N4 — Capture Thought → Ask BRAIN → TTC Brief; specs written, not built on phone
+- Vercel deployment — dashboard code at apps/crm-dashboard, needs GitHub push + Vercel project setup + env vars (NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY), root dir = apps/crm-dashboard
+- ecos-crm MCP not wired into Claude Code — connect command in DEPLOY.md, key in ~/.claude.json x-brain-key
 - F3 Boot protocol fix — CLAUDE.md global load reliability; blocks N2 Heartbeat
-- N2 Heartbeat — blocked on F3; design as Chief of Staff not Life Engine
+- N2 Heartbeat — blocked on F3 + PURPOSE.md
 - PURPOSE.md — still unwritten; must exist before Heartbeat is built
-- Neil Wave 2 futurism list — open since March 21, stale
-- Dispatcher routing table — identified March 25, not built
-- ~5 TTC entries from April 10 still tagged `immediate` — minor cleanup, low priority
-- TTC board context stale — handle in its own chat with fresh context
+- Apple Shortcuts N3/N4 — specs written, not built on phone
+- Neil Wave 2 futurism list — stale since March 21
+- Sprint 3c dedup audit — lowest priority, unlocked
+- ~5 TTC entries from April 10 still tagged immediate — minor cleanup
+- TTC board context stale — handle in its own chat
 
 ## Dispatcher Queue
-- CRM/GUI phase is highest-leverage next build — load Nate's docs, design relationship intelligence schema with multi-role membership, build Supabase tables + Vercel UI as one move
+- Two commands complete the CRM stack: (1) push repo + connect Vercel, (2) wire ecos-crm MCP. Both are mechanical — no design work needed. Do these before any new feature work.
 
 ## Decisions Made This Session
-- Sprint 3a backfill complete: ~1378 corpus entries classified with domain/horizon/signal_type/confidence via Python script + OpenRouter Haiku
-- Sprint 3b: base schema migration committed (`20260101000001_base_schema.sql`) — cold-start rebuild now possible
-- MCP UUID fix deployed: search_thoughts and list_thoughts now expose entry IDs, enabling direct use of update_thought/delete_thought from chat clients
-- Post-backfill audit remediation: 3 neil-outreach misclassifications fixed (→ tango-pedagogy/ecos-architecture), 28 stale TTC immediate entries downgraded to project
-- CRM design direction locked: relationship intelligence system (not standard CRM), multi-role membership schema required, OB1 professional-crm is starting point needing customization, schema + Vercel UI are one move
-- OpenRouter Haiku model ID: `anthropic/claude-haiku-4.5` (dots, not dashes)
+- CRM/GUI phase shipped: ecos-crm-mcp (12 tools, live at lqbrzoicorehwidkdhoi) + Vercel dashboard (3 views, builds clean)
+- ECOS_USER_ID = "a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11" — fixed UUID for all CRM tables (no Supabase auth users exist)
+- taste_preferences Branch A confirmed (table was absent from Supabase; new schema created)
+- pulse_log live schema is a pulse diary (state/now_doing/record columns), not a user-keyed event log — snapshot migration was a no-op
+- live professional_contacts has extra columns: linkedin_url, how_we_met, community_role, music_role, outreach_wave, billing_notes
+- contact_interactions: summary is NOT NULL, notes→follow_up_notes+follow_up_needed, user_id is UUID
+- opportunities: close_date→expected_close_date, user_id is UUID
+- relationship_domain and interaction_type CHECK constraints expanded via migrations (20260416000001, 20260416000002)
+- Dashboard v1: read-only, RLS deferred Sprint 4, secure at Vercel platform level
+- contact_roles junction table deferred Sprint 4 (accepted migration debt)
+- BRAIN↔CRM bridge live: thought_links JSONB[] on contacts, link_thought_to_contact + get_linked_thoughts
 
 ## Captures Pending
-none — 4 captures fired and confirmed at session close
+none — 6 captures fired and confirmed at session close
 
 ## Next Session Primer
-CRM/GUI phase: load Nate's docs first, then design the relationship intelligence schema — multi-role membership, Supabase tables, Vercel human door — as one integrated build.
+Deploy the Vercel dashboard and wire ecos-crm into Claude Code — two mechanical steps, CRM fully operational.
 
 ## Pending Improvements
 2026-04-13 | Add optional "Infrastructure Reference" section to HANDOFF.md template in ecos-close skill (middleware URL, deploy command, project ref) | pending
+2026-04-16 | Document pulse_log live schema in a reference migration or schema snapshot file | pending
 
 ---
 *ECOS State Document — plain markdown, no infrastructure dependency.*
