@@ -1,20 +1,15 @@
 # ORIENT
-*Thursday, April 16 2026 — updated at session close*
+*Friday, April 17 2026 — updated at session close*
 
 **Mode:** PARK
 
-**Today's work:** Sprint 4 fully shipped — BRAIN Browser + IT Client Tracker + nav consolidation. Migration applied, ecos-crm-mcp redeployed (17 tools), Vercel prod live.
+**Today's focus:** Neil Wave 2 hostile audit + pool corrections
 
 **Open loops (don't let these go cold):**
-- IT MCP tools smoke test — not done in-session. Verify: log_service_call → get_unbilled_work → create_billing_entry. Confirm rows in Supabase.
-- BRAIN browser verification — open /brain, filter by domain, click a thought, copy ID, run link_thought_to_contact.
-- PURPOSE.md — still unwritten; blocks N2 Heartbeat chain
-- F3 Boot protocol fix — still pending; blocks N2 Heartbeat
-- Neil Wave 2 futurism list — stale since March 21, staleness risk rising
-- Apple Shortcuts N3/N4 — specs written, not built on phone
-- RLS on dashboard — deferred to Sprint 5
-- TTC board context stale — handle in its own chat
+- Wave 2 PDF — 4 judgment calls unresolved (J1 Butler, J2 Webb/Cooney, J3 gateway rubric, J4 confidence display); resolve these first, then build PDF
+- TTC public-facing messaging doc — hard stop ~April 20, festival April 23 — URGENT
+- ecos-boot amendment (UTC offset + BRAIN-wins rule) — analyzed, still unwritten
 
-**Highest leverage:** Smoke test the IT MCP tools (30 min, closes Sprint 4 verification). Then: PURPOSE.md (unlocks the N2 Heartbeat chain) or Neil Wave 2 (rising staleness).
+**Highest leverage:** Resolve J1–J4, build Wave 2 delivery PDF. TTC doc is parallel urgent — cannot slip.
 
-**Constraints:** Single-funnel rule intact — no capture form on /brain. RLS deferred Sprint 5.
+**Constraints:** Wave 2 PDF blocked until J1–J4 decided. IT smoke test queues after both.
