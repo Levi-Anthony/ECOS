@@ -1,7 +1,7 @@
 # HANDOFF.md
 *ECOS live state document — v0.1*
 *Written by Claude at session close. Read by Claude at session start before querying BRAIN.*
-*Delete entries older than 3 sessions. Last updated: 2026-04-17*
+*Delete entries older than 3 sessions. Last updated: 2026-04-18*
 
 ---
 
@@ -9,35 +9,41 @@
 PARK
 
 ## Open Loops
-- Wave 2 PDF — 4 judgment calls unresolved before PDF build: (J1) Andrew Butler: named contact vs. journal inbox; (J2) Amy Webb/Cheryl Cooney: pool and log inconsistent; (J3) Rubric criterion 3 vs. 7 gateway-email contacts; (J4) email confidence display format in delivery PDF
-- TTC public-facing messaging doc — April 23 festival, hard stop ~April 20, URGENT
+- Wave 2 PDF — 4 judgment calls unresolved: (J1) Andrew Butler: named contact vs. journal inbox; (J2) Amy Webb/Cheryl Cooney: pool and log inconsistent; (J3) Rubric criterion 3 vs. 7 gateway-email contacts; (J4) email confidence display format in delivery PDF
+- TTC public-facing messaging doc — April 23 festival; NOTE: April 20 hard stop is NOT real — false inference, do not reify
 - IT MCP smoke test — log_service_call → get_unbilled_work → create_billing_entry; verify rows in Supabase
-- ecos-boot amendment — UTC offset correction (MST = UTC-7) and BRAIN-wins-on-conflict rule; analyzed, not yet written
+- BRAIN backfill — agent prompt ready at ~/ecos/docs/backfill-agent-prompt.md; run via ChatGPT Agent (not Claude Code — subagents cannot use WebFetch)
 - PURPOSE.md — unwritten; blocks N2 Heartbeat chain + F3 Boot protocol fix
 - BRAIN cleanup Trigger #1 — baseline audit not yet run
 - Maddie Stone reachability — moved to Caution; if current contact surfaces she is Send-grade
 - Jairus Grove — conflicting sources; do not include without direct confirmation
+- ecos-harvest skill — harvest workflow design validated this session; not yet formalized into a skill file
 
 ## Dispatcher Queue
-- Resolve J1–J4 → build Wave 2 delivery PDF (first)
-- TTC messaging doc (second, April 20 hard stop)
-- IT smoke test (third)
+- BRAIN backfill (highest leverage — agent prompt ready, one-time operation)
+- Resolve J1–J4 → build Wave 2 delivery PDF
+- TTC messaging doc (April 23 festival, no hard stop before that)
+- IT smoke test
 
 ## Decisions Made This Session
-- Zero-trust hostile audit is the active operating standard for all research documents (classify claims, evidence every fact, red-team corrections, gate with STATUS label)
-- Maddie Stone moved from Send to Caution — contact page 404, only email is 2020 launch-post Gmail (UNVERIFIED); pool corrected to 32 Send / 19 Caution / 12 Hold
-- Wave 2 pool counts corrected throughout pool file and verification log
+- ecos-boot amendment written and committed: BRAIN-wins-on-conflict rule + UTC offset correction (MST = UTC-7)
+- Harvest workflow architecture validated: grouped by destination (BRAIN-bound + repo-bound), pre-written control prompts per block group, checkpoint protocol
+- `philosophy` domain established in BRAIN (de facto via captures)
+- TASTE:: prefix deprecated — use signal_type field only
+- `Concepts/` folder created in vault for standalone philosophical/intellectual canonical notes
+- Block 2→ Concepts/, Block 3 → ECOS-META/session-seeds/, Block 6 → ECOS-META/session-records/
+- TTC April 20 hard stop confirmed as false inference — not a real constraint
 
 ## Captures Pending
-none — 3 captures fired and confirmed
+none — 3 session captures + 49 harvest captures fired and confirmed
 
 ## Next Session Primer
-Wave 2 pool is at 32 Send / 19 Caution / 12 Hold with 4 judgment calls blocking the PDF build — load the neil skill, resolve J1–J4, then build the delivery PDF. TTC doc is parallel urgent and cannot slip past April 20.
+BRAIN backfill is the highest-leverage move: agent prompt is written, credentials are in the file, run it via ChatGPT Agent. After that, load the neil skill and resolve Wave 2 J1–J4 to unblock the PDF build.
 
 ## Pending Improvements
 2026-04-13 | Add optional "Infrastructure Reference" section to HANDOFF.md template in ecos-close skill | pending
 2026-04-16 | Document pulse_log live schema in a reference migration or schema snapshot file | pending
-2026-04-17 | Amend ecos-boot skill: add UTC offset correction (MST = UTC-7) and BRAIN-wins-on-conflict rule for thread-level HANDOFF/BRAIN discrepancies | pending
+2026-04-18 | Formalize harvest workflow into ecos-harvest skill file | pending
 
 ---
 *ECOS State Document — plain markdown, no infrastructure dependency.*
