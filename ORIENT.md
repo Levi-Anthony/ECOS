@@ -1,15 +1,15 @@
 # ORIENT
-*Friday, April 18, 2026 — updated at session close*
+*Monday, April 21 2026 — generated at session close*
 
 **Mode:** PARK
 
-**Today's focus:** N2 Heartbeat — root cause diagnosed and fixed; loop running
+**Today's focus:** TTC public-facing messaging (festival April 23 — 2 days)
 
 **Open loops (don't let these go cold):**
-- TTC public-facing messaging doc — April 23 festival is 4 days out
-- Wave 2 PDF — J1–J4 still unresolved; pool 32 Send / 19 Caution / 12 Hold
+- TTC messaging doc — 2 days to festival, must be ready before April 23
 - BRAIN backfill — agent prompt ready at ~/ecos/docs/backfill-agent-prompt.md; run via ChatGPT Agent
+- iCloud → Google Calendar sync — blocking N2 briefing accuracy
 
-**Highest leverage:** BRAIN backfill (one-time, permanently upgrades retrieval) or TTC messaging doc (time-sensitive, April 23)
+**Highest leverage:** Draft and finalize the TTC public-facing messaging document for the April 23 festival debut — this is the single most time-sensitive loop.
 
-**Constraints:** N2 morning briefing still requires session to be open overnight; iCloud→Google Calendar sync unresolved; DND shortcut not built
+**Constraints:** Life Engine running (session-dependent overnight); DND Shortcut not built; Wave 2 J1–J4 unresolved; IT smoke test pending.
