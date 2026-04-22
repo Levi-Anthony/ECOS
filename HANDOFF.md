@@ -16,6 +16,7 @@ PARK
 - Wave 2 PDF — J1–J4 still unresolved; pool 32 Send / 19 Caution / 12 Hold
 - IT smoke test — log_service_call → get_unbilled_work → create_billing_entry
 - ecos-harvest skill — design validated, not yet formalized into skill file
+- supabase.ts Opportunity type: `expected_close_date` vs DB column `close_date` — type cast workaround in /weekly, needs proper fix
 
 ## Dispatcher Queue
 - TTC messaging doc (time-critical — April 23)
@@ -26,6 +27,10 @@ PARK
 ## Decisions Made This Session
 - Afternoon BRAIN surface suppressed during active Claude Code sessions (behavioral rule, applied consistently)
 - CronDelete on auto-fired one-shot returns expected error — handle gracefully, proceed to CronCreate
+- Pulse skill redesigned: data-driven situation report, stays silent when all signals green, asks ONE targeted question — never open-ended check-in
+- /briefings page added to CRM dashboard — surfaces life_engine_briefings table for Telegram observability
+- /weekly page added to CRM dashboard — BRAIN activity by domain, open loops, follow-ups, active opportunities, briefing stats
+- opportunities table has no status column — filter active by stage NOT IN (closed_won, closed_lost)
 
 ## Captures Pending
 none
