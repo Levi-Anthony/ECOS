@@ -1,7 +1,7 @@
 # HANDOFF.md
 *ECOS live state document — v0.1*
 *Written by Claude at session close. Read by Claude at session start before querying BRAIN.*
-*Delete entries older than 3 sessions. Last updated: 2026-04-23*
+*Delete entries older than 3 sessions. Last updated: 2026-04-30*
 
 ---
 
@@ -18,32 +18,28 @@ PARK
 - Smoke Test Client (ID: d218d5e5-2033-4593-881d-adced3e43e34) — test artifact, safe to delete
 - Claude.ai memories → BRAIN bridge — periodic operation until BRAIN reaches critical mass
 - TTC messaging edits — resurface next session
-- Preview/Development env vars not set on Vercel — only Production has Supabase keys
 - Semantic BRAIN search — deferred to next dashboard phase (requires OpenAI API route)
+- C3 BRAIN capture flagged needs_split — atomize into two entries next session if retrieval misses
 
 ## Dispatcher Queue
 - Seed Richard and Evelyn (next — paste claude.ai extractions to Claude Code)
 - BRAIN backfill via ChatGPT Agent
 
 ## Decisions Made This Session
-- Dashboard Phase 4 shipped: /people hub, going cold on /follow-ups, IT unbilled on /weekly, briefings type filter, 11 bug/polish fixes
-- Vitest test suite added: 79 tests across 4 files (helpers, aggregations, intel-status, schema-types)
-- lib/logic.ts created: all pure functions extracted with injectable clock pattern
-- aggregateUnbilled widened to accept undefined (ServiceLog optional field) — production build fix
-- Vercel rootDirectory set to apps/crm-dashboard via PATCH API — was root cause of 3 consecutive failed build failures
-- Dashboard live and READY on Vercel: crm-dashboard-levi-anthonys-projects.vercel.app
-- BRAIN domain colors unified: violet canonical for ecos-architecture across all pages
-- STAGE_COLORS, BRAIN_DOMAIN_COLORS, BRAIN_DOMAIN_LABELS centralized to lib/supabase.ts
-- Harvest protocol: compose + align before execute (T2 — confirmed as taste signal)
-- Instruction expansion: "generalize from one to the next" is standing active instruction (T1)
-- 9 BRAIN captures made: C1–C7 + T1 + T2
-- 2 vault files written: phase4-audit.md, phase4-plan.md to ECOS-PROJECTS/CRM_Dashboard/
+- ecos-crm-mcp CORS fix: added hono/cors middleware before auth handler; root cause was verify_jwt=false bypassing Supabase gateway CORS handling
+- close_date bug fixed in ecos-crm-mcp (8 locations, was expected_close_date); deployed
+- Vercel Preview + Development env vars set (NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY)
+- ecos-crm-mcp live as claude.ai custom connector — full MCP parity between Claude Code and mobile
+- MCP auth pattern locked: x-brain-key header (Claude Code) + ?key= query param (claude.ai) — both must be supported in every ECOS MCP server
+- OB1 spec confirmed: multiple MCPs are compliant; constraint is remote-only (Edge Functions), not count
+- CRM architecture assessed: relationship_domain is single-value enum (schema gap for multi-role contacts); BRAIN semantic search is de facto cross-domain integration layer
+- 3 BRAIN captures made: CORS/verify_jwt pattern, claude.ai MCP auth constraint, CRM single-domain schema gap
 
 ## Captures Pending
 none
 
 ## Next Session Primer
-Victoria and Kate seeded and snapshotted, dashboard Phase 4 complete and live — paste Richard and Evelyn claude.ai extractions to continue actor seeding; the pipeline is proven and fast.
+ecos-crm-mcp is live on claude.ai and all infrastructure gaps are closed — paste Richard and Evelyn claude.ai extractions to begin actor seeding; the pipeline is warm and both clients are ready.
 
 ## Pending Improvements
 2026-04-13 | Add optional "Infrastructure Reference" section to HANDOFF.md template in ecos-close skill | pending

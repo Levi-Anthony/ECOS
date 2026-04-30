@@ -1,15 +1,15 @@
 # ORIENT
-*Wednesday, April 23 2026 — updated at session close*
+*Wednesday, April 30, 2026 — updated at session close*
 
 **Mode:** PARK
 
-**Today's focus:** Dashboard Phase 4 + test infrastructure + deployment — all shipped
+**Today's focus:** MCP infrastructure — ecos-crm-mcp CORS fix, close_date bug, Vercel env vars, claude.ai connector
 
 **Open loops (don't let these go cold):**
 - Richard and Evelyn actor seeding — next in queue (paste claude.ai extractions to Claude Code)
-- BRAIN backfill via ChatGPT Agent (prompt at ~/ecos/docs/backfill-agent-prompt.md)
 - Wave 2 PDF — J1–J4 unresolved (32 Send / 19 Caution / 12 Hold)
+- BRAIN backfill via ChatGPT Agent
 
-**Highest leverage:** Seed Richard and Evelyn — Victoria and Kate complete, pipeline proven, extractions ready to run in claude.ai.
+**Highest leverage:** Seed Richard and Evelyn — pipeline proven, claude.ai now has full CRM tool access, ready to run.
 
-**Constraints:** Dashboard is live on Vercel (READY). Preview/Dev env vars not set on Vercel — only Production has Supabase keys. TTC festival was today (April 23).
+**Constraints:** CRM integration = Model 3 locked (no auto-push). relationship_domain is single-value — multi-role contacts need tags workaround.
