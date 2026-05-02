@@ -1,7 +1,7 @@
 # HANDOFF.md
 *ECOS live state document — v0.1*
 *Written by Claude at session close. Read by Claude at session start before querying BRAIN.*
-*Delete entries older than 3 sessions. Last updated: 2026-04-30*
+*Delete entries older than 3 sessions. Last updated: 2026-05-01*
 
 ---
 
@@ -9,9 +9,12 @@
 PARK
 
 ## Open Loops
-- Richard and Evelyn actor seeding — next in queue (run extractions in claude.ai, paste to Claude Code)
-- BRAIN backfill via ChatGPT Agent (prompt at ~/ecos/docs/backfill-agent-prompt.md)
-- Wave 2 PDF — J1–J4 unresolved; pool 32 Send / 19 Caution / 12 Hold
+- **Definitions spec sprint in progress** — Map components draft partially complete; Q2-Q7 unanswered (see Dispatcher Queue)
+- Four session artifacts not on disk — integral-space-audit.md, conversation-handoff.md, definitions-seed.md, dispatcher-seed.md exist only in prior claude.ai conversation; paste or reconstruct from BRAIN at next architecture session
+- Ontology spec not started — follows completion of definitions document
+- Richard and Evelyn actor seeding — next in queue (paste claude.ai extractions to Claude Code)
+- BRAIN backfill via ChatGPT Agent
+- Wave 2 PDF — J1–J4 unresolved (32 Send / 19 Caution / 12 Hold)
 - iCloud → Google Calendar sync — two options: webcal subscription or add Google account to iOS Calendar
 - DND Apple Shortcut — not built; required before Heartbeat goes to full production
 - BRAIN-CLEANUP-SPEC.md — not yet symlinked into ~/ecos/docs/ (still Obsidian-only)
@@ -22,24 +25,26 @@ PARK
 - C3 BRAIN capture flagged needs_split — atomize into two entries next session if retrieval misses
 
 ## Dispatcher Queue
-- Seed Richard and Evelyn (next — paste claude.ai extractions to Claude Code)
-- BRAIN backfill via ChatGPT Agent
+- Definitions spec sprint: answer Q2-Q7 to complete Map components section
+  - Q2: Shadow vector — what's the referent? Named pattern? Relational field? Shadow dimension of a line?
+  - Q3: Constraint — concrete example from Levi's map (prevents collapse into "non-negotiable value")
+  - Q4: Taste signature — unified or domain-specific?
+  - Q5: Magnetic connection — CRM, BRAIN, or both?
+  - Q6: Rhythm "currently active" — map layer, operator state, or separate layer?
+  - Q7: Developmental verb naming — alternatives to Wilber's "movements"?
+- After Q2-Q7: complete Map components definitions, move to ontology spec
 
 ## Decisions Made This Session
-- ecos-crm-mcp CORS fix: added hono/cors middleware before auth handler; root cause was verify_jwt=false bypassing Supabase gateway CORS handling
-- close_date bug fixed in ecos-crm-mcp (8 locations, was expected_close_date); deployed
-- Vercel Preview + Development env vars set (NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY)
-- ecos-crm-mcp live as claude.ai custom connector — full MCP parity between Claude Code and mobile
-- MCP auth pattern locked: x-brain-key header (Claude Code) + ?key= query param (claude.ai) — both must be supported in every ECOS MCP server
-- OB1 spec confirmed: multiple MCPs are compliant; constraint is remote-only (Edge Functions), not count
-- CRM architecture assessed: relationship_domain is single-value enum (schema gap for multi-role contacts); BRAIN semantic search is de facto cross-domain integration layer
-- 3 BRAIN captures made: CORS/verify_jwt pattern, claude.ai MCP auth constraint, CRM single-domain schema gap
+- ECOS ontology entity structure: Line, Practice, and Operational commitment are separate first-class entities (Option A). Domain-view (all three as analytic lenses on a single domain) is a composed/emergent view, not fundamental.
+- Domain grouping mechanism (lightweight tag or label) may be needed to link related entities without making "Domain" first-class — pending architectural question for ontology spec.
+- Dispatcher spec explicitly deferred until definitions + ontology complete. Tentative five-mode structure (Surfacing, Capture, Retrieval, Synthesis, Review) held lightly — may be architecturally overloaded; may need reconceptualization once map entities are known.
+- Sequencing locked: definitions → ontology → map. Dispatcher follows ontology; does not precede it.
 
 ## Captures Pending
 none
 
 ## Next Session Primer
-ecos-crm-mcp is live on claude.ai and all infrastructure gaps are closed — paste Richard and Evelyn claude.ai extractions to begin actor seeding; the pipeline is warm and both clients are ready.
+Definitions spec sprint is active — Map components draft in hand, answers to Q2-Q7 needed to finish it, then ontology spec follows.
 
 ## Pending Improvements
 2026-04-13 | Add optional "Infrastructure Reference" section to HANDOFF.md template in ecos-close skill | pending
