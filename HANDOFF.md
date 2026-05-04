@@ -1,7 +1,7 @@
 # HANDOFF.md
 *ECOS live state document — v0.1*
 *Written by Claude at session close. Read by Claude at session start before querying BRAIN.*
-*Delete entries older than 3 sessions. Last updated: 2026-05-01*
+*Delete entries older than 3 sessions. Last updated: 2026-05-04*
 
 ---
 
@@ -9,7 +9,8 @@
 PARK
 
 ## Open Loops
-- **Definitions spec sprint in progress** — Map components draft partially complete; Q2-Q7 unanswered (see Dispatcher Queue)
+- **Definitions spec sprint — corrections pending** — Levi has manually annotated the definitions draft and integral space map; paste + correction pass must happen before Q2-Q7 can proceed
+- Definitions spec Q2-Q7 unanswered (shadow vector, constraint example, taste signature, magnetic connection, rhythm layer, developmental verb naming)
 - Four session artifacts not on disk — integral-space-audit.md, conversation-handoff.md, definitions-seed.md, dispatcher-seed.md exist only in prior claude.ai conversation; paste or reconstruct from BRAIN at next architecture session
 - Ontology spec not started — follows completion of definitions document
 - Richard and Evelyn actor seeding — next in queue (paste claude.ai extractions to Claude Code)
@@ -25,26 +26,18 @@ PARK
 - C3 BRAIN capture flagged needs_split — atomize into two entries next session if retrieval misses
 
 ## Dispatcher Queue
-- Definitions spec sprint: answer Q2-Q7 to complete Map components section
-  - Q2: Shadow vector — what's the referent? Named pattern? Relational field? Shadow dimension of a line?
-  - Q3: Constraint — concrete example from Levi's map (prevents collapse into "non-negotiable value")
-  - Q4: Taste signature — unified or domain-specific?
-  - Q5: Magnetic connection — CRM, BRAIN, or both?
-  - Q6: Rhythm "currently active" — map layer, operator state, or separate layer?
-  - Q7: Developmental verb naming — alternatives to Wilber's "movements"?
-- After Q2-Q7: complete Map components definitions, move to ontology spec
+- Next session: paste annotated definitions draft → work through corrections in conversation → write to disk at ECOS-PROJECTS/ECOS-definitions-spec.md
+- Then: same for integral space map → ECOS-ARCHITECTURE/ECOS-integral-space-map.md
+- Then: Q2-Q7 to complete Map components section → proceed to ontology spec
 
 ## Decisions Made This Session
-- ECOS ontology entity structure: Line, Practice, and Operational commitment are separate first-class entities (Option A). Domain-view (all three as analytic lenses on a single domain) is a composed/emergent view, not fundamental.
-- Domain grouping mechanism (lightweight tag or label) may be needed to link related entities without making "Domain" first-class — pending architectural question for ontology spec.
-- Dispatcher spec explicitly deferred until definitions + ontology complete. Tentative five-mode structure (Surfacing, Capture, Retrieval, Synthesis, Review) held lightly — may be architecturally overloaded; may need reconceptualization once map entities are known.
-- Sequencing locked: definitions → ontology → map. Dispatcher follows ontology; does not precede it.
+- None locked. Session was direction-setting only — boot + plan creation.
 
 ## Captures Pending
 none
 
 ## Next Session Primer
-Definitions spec sprint is active — Map components draft in hand, answers to Q2-Q7 needed to finish it, then ontology spec follows.
+Paste the annotated definitions draft first — corrections run before Q2-Q7, and Q2 (shadow vector referent) is likely already resolved from BRAIN.
 
 ## Pending Improvements
 2026-04-13 | Add optional "Infrastructure Reference" section to HANDOFF.md template in ecos-close skill | pending
