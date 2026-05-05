@@ -18,6 +18,8 @@ Do not split under quantity pressure. Split only where the geometry demands it. 
 
 **No dedup gate.** Thematic proximity is increased retrieval surface area — a feature, not clutter. Redundant captures are additional samples that sharpen the covariance estimate of the underlying Gaussian. Near-duplicate entries compete on retrieval scoring and the better-matched one wins. Dedup-and-collapse is deprecated.
 
+**Pre-submission survival test.** At some point in the capture pipeline — whether during drafting, MCP processing, or edge function handling — entries may be paraphrased or restructured. The source of rewriting is not always clear. Before submitting, verify each entry would survive aggressive rewriting without loss of meaning. Embed meaning structurally; do not rely on specific phrasing. Note: original submitted text must always be stored and recallable (BRAIN invariant) — but submitted entries should be strong enough to remain useful even if only a rewritten version surfaces in retrieval.
+
 ---
 
 ## Capture Protocol
