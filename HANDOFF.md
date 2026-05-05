@@ -70,7 +70,7 @@ Continue integral space map annotation from next item after Development Modes �
 2026-04-16 | Document pulse_log live schema in a reference migration or schema snapshot file | pending
 2026-04-20 | Add 8AM–11AM gap window to life-engine SKILL.md as formally documented silent window | pending
 2026-04-20 | Add CronDelete one-shot error handling note to life-engine SKILL.md Gotchas | pending
-2026-05-04 | brain-capture-protocol.md: Add pre-submission survival test — entries must survive pipeline rewriting without loss of meaning; note that source of rewriting is ambiguous and original text invariant must be verified in pipeline | pending
+2026-05-04 | brain-capture-protocol.md: Add pre-submission survival test — entries must survive pipeline rewriting without loss of meaning; note that source of rewriting is ambiguous and original text invariant must be verified in pipeline | DONE
 
 ---
 *ECOS State Document — plain markdown, no infrastructure dependency.*
