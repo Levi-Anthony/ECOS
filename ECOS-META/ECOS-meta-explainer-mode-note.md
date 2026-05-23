@@ -1,3 +1,8 @@
+> **Superseded — 2026-05-23.** The canonical explainer system is now the ECB Lessonize Prompt Kit
+> in BRAIN (`ecb_lessonize_index` and its 7 referenced artifacts; filesystem mirror at
+> `ECOS-PROMPTS/lessonize-kit/`). This file is preserved as the historical first sketch of the
+> doctrine — see `ecb_lessonize_standing_doctrine` for the current version.
+
 # Explainer Mode Note
 
 ## Purpose

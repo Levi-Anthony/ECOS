@@ -101,3 +101,4 @@ When a mistake is corrected: immediately propose a rule addition to this file or
 - **Human layer vault:** `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ECOS/`
   Files: `PURPOSE.md` (quarterly anchor), `ORIENT.md` (daily), `Operations/PULSE_LOG.md` (hourly log)
 - **Skill not loading:** Invoke explicitly with `/skill-name` if auto-trigger fails.
+- **Lessonize / explainer mode:** Triggers "lessonize", "lessonize this/that", "explainer mode" → retrieve `ecb_lessonize_index` from BRAIN. Index composes doctrine + output contract + one mode module (+ optional `ecb_lessonize_context_module`). Don't answer from memory — retrieve first.
