@@ -3,7 +3,7 @@ title: ecb_lessonize_standing_doctrine
 doc_type: agent_context
 scope: global
 target_runtime: any
-domain: pedagogy
+domain: prompt-kits
 maintained_by: human
 authority_level: approved_instruction
 version: 1.0
