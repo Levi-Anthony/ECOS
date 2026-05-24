@@ -3,7 +3,7 @@ name: ecos-deep
 description: >
   Load for ECOS architecture sessions — designing, modifying, or stress-testing
   ECOS infrastructure, BRAIN, SIGMA, dispatcher logic, skill files, or the
-  HANDOFF protocol. Use when Levi mentions ECOS internals, SIGMA naming,
+  session continuity protocol. Use when Levi mentions ECOS internals, SIGMA naming,
   BRAIN architecture, or asks to work on the operating system itself.
   Do NOT load for normal working sessions — CLAUDE.md handles those.
 disable-model-invocation: false
@@ -20,7 +20,7 @@ Run at skill load: `search_thoughts("TASTE system design architecture ECOS", thr
 ```
 ECOS (container — flagship name, exempt from SIGMA)
 ├── CLAUDE.md          always-loaded boot substrate (≤120 lines hard ceiling)
-├── HANDOFF.md         live state document — written at close, read at boot
+├── handoff snapshots  live session state of record — in ECB, read at boot via get_boot_context
 ├── SIGMA              constitutional naming standard for all subsystems
 ├── BRAIN              semantic memory (Thoughts + Documents)
 │   ├── Supabase/pgvector database
@@ -50,7 +50,7 @@ Full expansion not yet locked.
 - SIGMA as governing naming standard
 - Conformal mapping as correct cross-domain vocabulary (angle preservation,
   not fractal self-similarity)
-- HANDOFF.md replaces Cowork as primary live state layer for v1
+- ECB handoff snapshots are the live state of record (superseded HANDOFF.md markdown 2026-05; markdown is now an optional export)
 - Cowork remains the target for scheduled/persistent state in v2
 
 ## BRAIN Retrieval Protocol
@@ -81,7 +81,7 @@ does this entry land in one place on retrieval?
 - **CLAUDE.md overflow:** When approaching 120 lines, move rules to
   `.claude/rules/` not to skill files. Skill files are domain modules, not
   rule overflow buckets.
-- **HANDOFF.md staleness:** Timestamp is required. If last_updated is >3 days,
+- **Snapshot staleness:** If the latest handoff snapshot is >3 days old,
   treat as cold start regardless of content.
 - **Cowork dependency risk:** Cowork is confirmed architecture, unconfirmed
   behavior. Do not make Cowork load-bearing until tested in actual workflow.

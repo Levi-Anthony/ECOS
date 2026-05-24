@@ -1,5 +1,5 @@
 # ECOS — Effortless Connection Operating System
-*v0.1 — last updated: 2026-03-30*
+*v0.2 — last updated: 2026-05-24*
 
 **Levi** | Musician, tango instructor, systems thinker, IT consultant | Tucson, AZ
 Operational domains: ECTango pedagogy, ECOS/BRAIN architecture, TTC board, Neil outreach, IT consulting, music production.
@@ -8,9 +8,9 @@ Operational domains: ECTango pedagogy, ECOS/BRAIN architecture, TTC board, Neil 
 
 ## Boot Sequence
 
-Run at every session start before any other work. Read HANDOFF.md first if it exists.
+Run at every session start before any other work. Call `get_boot_context` first — it returns the latest handoff snapshot, recent pulse, and boot-tagged artifacts (Operational Kernel, PURPOSE, Primitives Catalog). That is the continuity source of truth; do not read vault markdown.
 
-**C1 — Retrieval:** Query BRAIN for active threads, open loops, recent decisions relevant to this session. If HANDOFF.md exists, read it first — BRAIN fills gaps.
+**C1 — Retrieval:** Call `get_boot_context`, and in parallel query BRAIN for active threads, open loops, recent decisions relevant to this session. The snapshot anchors; BRAIN fills gaps.
 - Pass: context is present. Fail: declare cold start, proceed on BRAIN alone, flag gap.
 
 **C2 — Sharpening:** Identify the single highest-leverage action available now. Surface drift, stale loops, unresolved decisions.
@@ -38,16 +38,16 @@ Invokes state through conditions. Does not accommodate — moves through transit
 
 Primary resource being managed: activation energy. Every transition routes forward without a parsing gap — no branch ends in waiting or ambiguity.
 
-At PARK or session end: write HANDOFF.md and update ORIENT.md.
+At PARK or session end: save a handoff snapshot to ECB (`save_handoff_snapshot`) and append a close event (`append_handoff_event`).
 
 ---
 
 ## Invariants
 
 - BRAIN is always queried, never assumed
-- HANDOFF.md is written at every session close — no exceptions
-- ORIENT.md is written at every boot when file tools are available; output as text on mobile. Updated at every close.
-- PULSE_LOG.md is read at boot (last 8 entries) — Levi's hourly check-ins
+- State of record lives in ECB, never in filesystem markdown
+- A handoff snapshot is saved to ECB at every session close — no exceptions (`save_handoff_snapshot`)
+- Continuity is read at boot via `get_boot_context` (snapshot + recent pulse + boot artifacts); vault markdown is an optional export, never read at boot, never blocking
 - Captures are proposed before executed — never unilateral
 - Structural decisions are proposed before executed — never unilateral
 - Rewrite ≠ consolidate — separate items stay separate
@@ -66,7 +66,7 @@ At every natural pause point — before proposing, before closing, after deliver
 
 - Use `@path/to/file` references — never ask Levi to paste content
 - Suggest `/clear` when switching between unrelated domains
-- At ~40 exchanges, transition to PULSE and write HANDOFF.md before continuing
+- At ~40 exchanges, transition to PULSE and save a handoff snapshot before continuing
 - Parallelize independent subtasks where possible
 - CLAUDE.md hard ceiling: 120 lines. Overflow → reference files or `.claude/rules/`
 
@@ -94,10 +94,10 @@ When a mistake is corrected: immediately propose a rule addition to this file or
 
 ## Quick Reference
 
-- **Cold start / no HANDOFF.md:** Run boot on BRAIN alone. Flag the gap. Don't skip boot.
+- **Cold start / no prior snapshot:** Run boot on BRAIN alone via `get_boot_context`. Flag the gap. Don't skip boot.
 - **Stuck in ERROR:** Name the blocker, execute smallest available action. Don't wait.
 - **Capture impulse:** Search BRAIN first. Propose, don't execute. One center of mass per entry.
-- **Session ending:** Write HANDOFF.md + update ORIENT.md before closing — no exceptions.
-- **Human layer vault:** `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ECOS/`
-  Files: `PURPOSE.md` (quarterly anchor), `ORIENT.md` (daily), `Operations/PULSE_LOG.md` (hourly log)
+- **Session ending:** Save a handoff snapshot to ECB before closing — no exceptions. Vault markdown is an optional human-facing export.
+- **Human layer vault (optional exports, human-facing only):** `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ECOS/`
+  Files: `PURPOSE.md`, `ORIENT.md`, `Operations/PULSE_LOG.md` — mirrors for reading on mobile; canonical lives in ECB.
 - **Skill not loading:** Invoke explicitly with `/skill-name` if auto-trigger fails.

@@ -1,8 +1,9 @@
 ---
 name: ecos-boot
 description: >
-  Executable ECOS boot sequence — reads HANDOFF.md, queries BRAIN in parallel,
-  and outputs the single highest-leverage action with a concrete first step.
+  Executable ECOS boot sequence — calls get_boot_context, queries BRAIN in
+  parallel, and outputs the single highest-leverage action with a concrete
+  first step.
   Use this skill whenever the user says anything like: "boot", "start",
   "cold start", "resume", "pick up where I left off", "what's hot",
   "what should I work on", "what's next", "begin session", "start session",
@@ -18,39 +19,21 @@ action as fast as possible.
 
 ## Execution Steps
 
-### Step 1 — Read HANDOFF.md (three-path resolution)
+### Step 1 — Call `get_boot_context`
 
-Try paths in order — stop at first success:
-
-**Path A — Claude Code (file tools available):**
-Read `~/ecos/HANDOFF.md` directly via Read tool. This is a symlink to the
-vault canonical location.
-
-**Path B — Mobile / any client (GitMCP available):**
-Read `HANDOFF.md` from `github.com/Levi-Anthony/ECOS` via GitHub MCP tool.
-Requires GitMCP to be configured in the current client's MCP settings.
-
-**Path C — Fallback (neither available):**
-BRAIN-only cold start. Flag explicitly in boot output:
-`"HANDOFF unavailable — cold start on BRAIN."`
-
-For **PULSE_LOG** and **PURPOSE.md**: attempt Read tool only. If unavailable
-(mobile), skip silently — flag `"PULSE_LOG unavailable (mobile)"` in boot
-output. Do not block boot.
-
-For **ORIENT.md write** (post-boot): attempt Write tool. If unavailable,
-output the ORIENT block as formatted text in the boot response instead.
-Flag: `"ORIENT not written (mobile) — displayed below."`
-
----
+Call `get_boot_context` (works on any client — it's an MCP tool). It returns
+the latest handoff snapshot, recent pulse, and the boot-tagged canonical
+artifacts (Operational Kernel, PURPOSE, ECOS Primitives Catalog). This is the
+continuity source of truth. Do not read vault markdown — `HANDOFF.md`,
+`ORIENT.md`, and `PULSE_LOG.md` are optional human-facing exports, not read here.
 
 Determine whether this is a **warm start** or **cold start**:
 
-- **Warm start**: HANDOFF.md has real content — a mode, open loops, decisions,
+- **Warm start**: the snapshot has real content — a mode, open loops, decisions,
   a next-session primer. Extract the current focus domain and any open loops.
-- **Cold start**: HANDOFF.md is blank, contains placeholder values like
-  `[MODE]`, `[DATE]`, or is unavailable (Path C). BRAIN still has context —
-  proceed on BRAIN alone and flag the gap.
+- **Cold start**: `get_boot_context` returns no usable snapshot. BRAIN still has
+  context — proceed on BRAIN alone and flag the gap:
+  `"No prior snapshot — cold start on BRAIN."`
 
 ### Step 2 — Query BRAIN (five calls, in parallel)
 
@@ -68,11 +51,11 @@ starting the next. Use threshold 0.38 for the four `search_thoughts` calls.
 
 **Choosing the domain query:**
 
-- If HANDOFF.md names a current focus domain or next-session primer, derive
+- If the snapshot names a current focus domain or next-session primer, derive
   the query from that. Examples:
   - Primer says "Neil Wave 2 outreach" → query: `"Neil Wave 2 outreach futurism contacts status"`
   - Open loop says "TTC festival planning" → query: `"TTC festival planning timeline decisions"`
-- If HANDOFF.md is blank (cold start), use: `"recent work highest priority active domain"`
+- If the snapshot is empty (cold start), use: `"recent work highest priority active domain"`
 
 ### Step 3 — Synthesize and Output
 
@@ -121,10 +104,13 @@ This is the core judgment the boot sequence exists to make. Consider:
 
 When multiple candidates are close, prefer the one that unblocks other work.
 
-### After Boot — Write ORIENT.md
+### After Boot — Optional ORIENT.md export (human-facing)
 
-After delivering boot output, write today's ORIENT.md to the Obsidian vault:
+ORIENT.md is a best-effort human-facing export, not part of the source of
+truth. After delivering boot output, you may write today's ORIENT.md to the
+Obsidian vault for Levi to read on mobile:
 `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ECOS/ORIENT.md`
+Skip silently if file tools are unavailable — never block on it.
 
 ORIENT format (overwrite the file each time):
 ```markdown
@@ -149,7 +135,7 @@ Include a MOMENTUM section (in motion / closes this week / stale / win to protec
 on Sundays. Include a STRATEGY section (active domains / what's building / what
 would be lost) on the 1st of each month.
 
-Once ORIENT is written, you're in ACTIVE state. Wait for Levi to confirm
+After boot output is delivered, you're in ACTIVE state. Wait for Levi to confirm
 direction or redirect. Do not begin domain work unprompted — the boot output
 is a proposal, not a commitment.
 
@@ -158,9 +144,9 @@ skill from `~/ecos/.claude/skills/` and begin.
 
 ## Edge Cases
 
-- **BRAIN returns nothing useful**: Fall back to HANDOFF.md content alone.
+- **BRAIN returns nothing useful**: Fall back to the handoff snapshot alone.
   If both are empty, say so plainly and ask Levi what's on his mind.
 - **Multiple domains competing**: Name both in the context summary, but still
   pick one highest-leverage action. Levi can redirect.
-- **HANDOFF.md has stale data**: Use it as a starting point but weight BRAIN
+- **Snapshot has stale data**: Use it as a starting point but weight BRAIN
   results more heavily — they may be more current.
