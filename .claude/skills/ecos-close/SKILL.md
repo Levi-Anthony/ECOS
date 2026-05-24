@@ -2,7 +2,7 @@
 name: ecos-close
 description: >
   ECOS session close protocol — transitions to PARK, proposes BRAIN captures,
-  and writes HANDOFF.md. Use whenever the session is ending, winding down, or
+  and saves a handoff snapshot to ECB. Use whenever the session is ending, winding down, or
   the user says anything like: "let's close", "wrap up", "park it", "done for
   now", "save state", "write handoff", "session close", "that's it for today",
   or when ~40 exchanges have passed. If the session produced real work, this
@@ -12,8 +12,8 @@ description: >
 # ECOS Close
 
 This skill executes the ECOS session close protocol. It transitions the
-session to PARK and writes HANDOFF.md so the next boot has real state to
-work with.
+session to PARK and saves a handoff snapshot to ECB so the next boot has real
+state to work with.
 
 ## Execution Steps
 
@@ -27,7 +27,7 @@ Review what happened this session. Identify:
 - The single most important thing to surface at next boot
 
 Keep this inventory internal. Don't dump it on Levi unless he asks — it
-feeds into the HANDOFF.md and capture proposal.
+feeds into the handoff snapshot and capture proposal.
 
 ### Step 2 — Propose BRAIN captures
 
@@ -71,78 +71,45 @@ that were too transient or logistical to be worth retrieving, and entries
 Levi declined. The skip list is how the capture protocol stays accountable —
 it makes the filtering visible instead of silent.
 
-### Step 5 — Update ORIENT.md
+### Step 5 — Optional ORIENT.md export (human-facing)
 
-Refresh `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ECOS/ORIENT.md`
-with end-of-session state. Keep the same format as boot-generated ORIENT, but
-update open loops and highest leverage to reflect what's true NOW (not at session
-start). Levi may read this on mobile after the session closes.
+Best-effort only — not the source of truth. If file tools are available, refresh
+`~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ECOS/ORIENT.md` with
+end-of-session state so Levi can read it on mobile. Keep the same format as
+boot-generated ORIENT, updating open loops and highest leverage to reflect
+what's true NOW. Skip silently if unavailable — never block close on it.
 
-### Step 6 — Write HANDOFF.md
+### Step 6 — Save the handoff snapshot to ECB
 
-Update `~/ecos/HANDOFF.md` with real state. Use this exact structure:
+Compile end-of-session state and call `save_handoff_snapshot` with it, then
+`append_handoff_event` for the close event (`state_change` → PARK). This is the
+record the next boot reads via `get_boot_context`. Include:
 
-```markdown
-# HANDOFF.md
-*ECOS live state document — v0.1*
-*Written by Claude at session close. Read by Claude at session start before querying BRAIN.*
-*Delete entries older than 3 sessions. Last updated: [today's date]*
+- **Current mode:** PARK
+- **Open loops:** one line per thread that didn't close this session
+- **Dispatcher queue:** what the dispatcher was tracking when the session ended
+- **Decisions made this session:** locked decisions only
+- **Captures pending:** approved but not yet submitted, if any — otherwise "none"
+- **Next session primer:** the single most important thing to surface at boot
+- **Pending improvements:** proposed changes to CLAUDE.md / skill files / canonical
+  artifacts awaiting approval (date | proposed change | approved/pending)
 
----
+Every field must have real content or an explicit "none." A blank field means
+lost state at next boot.
 
-## Current Mode
-PARK
+### Step 7 — Optional vault export (human-facing)
 
-## Open Loops
-- [one line per open thread that didn't close this session]
-
-## Dispatcher Queue
-- [what the dispatcher was tracking when session ended]
-
-## Decisions Made This Session
-- [locked decisions only — one line each]
-
-## Captures Pending
-- [approved but not yet submitted, if any — otherwise "none"]
-
-## Next Session Primer
-[one sentence — the single most important thing to surface at boot]
-
-## Pending Improvements
-[proposed changes to CLAUDE.md or skill files awaiting approval]
-[format: date | proposed change | approved/pending]
-
----
-*ECOS State Document — plain markdown, no infrastructure dependency.*
-*Boot order: read this file first, then query BRAIN. External state before internal enrichment.*
-```
-
-Every field must have real content or an explicit "none." No placeholder
-brackets. No empty bullets. The next boot will read this file and a blank
-field means lost state.
-
-### Step 7 — Commit and push HANDOFF.md
-
-After writing HANDOFF.md, commit and push it to the vault repo so mobile boot
-can read it via GitMCP:
-
-```
-git -C "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ECOS" \
-  add HANDOFF.md && \
-  git commit -m "session close $(date +%Y-%m-%d)" && \
-  git push
-```
-
-If push fails (offline, auth issue): note the failure in the confirm output.
-Mobile boot will cold-start on BRAIN alone. Do not block session close on a
-push failure — HANDOFF.md is still written locally and symlinked.
+The snapshot in ECB is the record; the next boot reads it via `get_boot_context`
+on any client, so no git push is required for continuity. Only if Levi has asked
+for a readable vault copy, write `HANDOFF.md` to the vault as a best-effort
+export. Never block close on an export or push failure.
 
 ### Step 8 — Confirm close
 
-After writing HANDOFF.md, confirm to Levi:
+After saving the snapshot, confirm to Levi:
 
 - State: PARK
 - Number of captures made
 - The next-session primer (so he sees it before closing the window)
 
-Keep it to three lines. The HANDOFF.md has the detail.
+Keep it to three lines. The snapshot has the detail.

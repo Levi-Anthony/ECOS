@@ -16,7 +16,7 @@ Periodic state assessment. Runs on /loop. Every invocation follows this sequence
 
 ## Pulse Loop
 
-1. **Read HANDOFF.md** — what is the current mode and open loop state?
+1. **Read continuity from ECB** (`get_boot_context` / `get_latest_handoff_snapshot` / `list_recent_pulse`) — what is the current mode and open-loop state?
 2. **Check dispatcher** — does any transition condition fire?
    - Loop closed → ACTIVE → PULSE transition due
    - Session exceeded 40 exchanges → PULSE due
@@ -25,7 +25,7 @@ Periodic state assessment. Runs on /loop. Every invocation follows this sequence
 4. **Assess** — is there anything worth surfacing right now?
    - If yes: deliver briefing (messaging channel if configured, else inline)
    - If no: do nothing. Silence is better than noise.
-5. **Update HANDOFF.md** — record this pulse and any findings
+5. **Log the pulse to ECB** (`log_pulse`; `append_handoff_event` for any finding) — record this pulse and any findings
 
 ## Briefing Format
 
@@ -43,7 +43,7 @@ Stale: [any loop with no movement — name it]
 
 - Do not send a briefing if nothing has changed since the last pulse
 - One stale loop surfaced per pulse maximum — don't flood
-- Always update HANDOFF.md even if no briefing is sent
+- Always log the pulse to ECB (`log_pulse`) even if no briefing is sent
 - Respect quiet hours if messaging channel is configured (7PM–6AM)
 
 ## Delivery Channel
@@ -52,7 +52,7 @@ Stale: [any loop with no movement — name it]
 POST briefings to a Shortcuts webhook URL. The Shortcut handles native iOS
 delivery — notification, iMessage to self, spoken via Siri, or any combination.
 No third-party bot, no extra account. Set the webhook URL as an environment
-variable or store in HANDOFF.md under a `config` field.
+variable.
 
 ```bash
 curl -X POST "[YOUR_SHORTCUTS_WEBHOOK_URL]" \
