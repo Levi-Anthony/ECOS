@@ -7,6 +7,13 @@
 > were sandboxed and used only to cross-check the derivation.
 >
 > `artifact_type: reentry_record` · `session_case_study: true` · authored 2026-05-28
+>
+> **Correction 2026-05-28 (mid-session):** D4 was rewritten from "two representations
+> (human prose + machine block)" to "dual legibility — one well-structured artifact
+> navigable by both audiences" after Levi flagged the original framing as conflating
+> dual legibility with duplicated content. §8 is retained as an *optional* structured
+> summary, **not** as a doctrinal mirror. Atom `00a7304d` superseded by a corrected
+> capture; formal REST archive/patch queued for next session.
 
 ---
 
@@ -93,17 +100,32 @@ Each: **Decision / Why / Evidence / Alternatives rejected / Risk-if-wrong / Reen
 - **Risk-if-wrong:** Under-specified evidence forces re-derivation. Mitigated by §2's six fields.
 - **Reentry instruction:** Read these as findings you may override with cause, not as orders.
 
-### D4 — Two representations (human prose + machine block)
-- **Decision:** The record carries human prose (§§0–6) and a parseable mirror (§8).
-- **Why:** The reentry agent's *type is unknown* — human or machine. A one-audience
-  representation fails half the arrivals.
-- **Evidence:** Independently corroborated by the found Two-Door principle and the advisor's
-  "Two-Doors" — convergence from three directions.
-- **Alternatives rejected:** Prose-only (not machine-queryable); JSON-only (not human-scannable).
-- **Risk-if-wrong:** The two representations drift apart. Mitigated by §8 being a strict mirror
-  and the cold-reentry test (§ verification) checking both.
-- **Reentry instruction:** Update both representations together; if they disagree, prose is the
-  source of intent, §8 is the source of structure.
+### D4 — Dual legibility: one well-structured artifact, navigable by both human and agent (corrected 2026-05-28)
+- **Decision:** Write a single artifact whose *structure* — clear sections, addressable
+  units, complete sentences, explicit references — is legible and navigable to whoever
+  arrives, human or agent. The atomic thoughts shed to BRAIN (§7 / D5) are the
+  machine-retrievable layer; the artifact does **not** require a parallel machine-readable
+  mirror. §8 below is retained as an *optional* structured summary for tooling that
+  prefers explicit fields — not as a doctrinal mirror.
+- **Why:** The reentry agent's type is unknown, but the canonical response is *not*
+  "duplicate content in two formats." Dual legibility (Open Brain standard, thought
+  `b06540db`) means one entry written well enough that both audiences can find, navigate,
+  and parse it — "a note for a smart colleague who wasn't in the room" satisfies both
+  simultaneously. Two-Door (thought `e741ab2c`) refers to *access mechanism* — both an
+  MCP/API door and a visual/scannable door reach the same data — not to content
+  duplication. The prior framing here conflated access-paths with content-mirrors and
+  overstated the doctrinal requirement.
+- **Evidence:** Thoughts `b06540db` (dual-legibility standard) and `e741ab2c` (Two-Door
+  principle); Levi's explicit correction 2026-05-28.
+- **Alternatives rejected:** "Two-block format with strict prose↔JSON mirror" (the prior,
+  incorrect formulation — overstated; introduces drift risk without doctrinal warrant).
+  Unstructured prose blob (fails navigability for both audiences).
+- **Risk-if-wrong:** Reverting to undisciplined prose (hard to navigate) or to duplicated
+  blocks (drift). Mitigated by clean section headings, addressable units, and
+  atom-shedding to BRAIN.
+- **Reentry instruction:** Structure the artifact for navigability by both audiences. If
+  you find yourself authoring a parallel JSON mirror, ask whether you are propagating the
+  old misreading.
 
 ### D5 — Durable memory = atoms shed from the source doc, not the whole doc stored
 - **Decision:** This record is the *source document*; durable memory (§7) is a set of
@@ -205,7 +227,7 @@ If `dd4e6c7` is not an ancestor of `origin/main`, the desktop clone is a differe
 
 ## 6. Risks / Failure Modes
 
-- **Drift between prose (§§1–6) and machine block (§8)** → enforce mirror updates (D4).
+- **§8 mistaken for a doctrinal mirror rather than an optional structured summary** → see corrected D4; prose + structure already satisfies dual legibility, §8 is tactical convenience.
 - **§2 bloats into chain-of-thought** → keep to the six fields; evidence not traces (D3).
 - **Atoms over-fragmented or context-distorting** → each must stand alone, one claim (D5).
 - **The record itself goes stale** like `HANDOFF.md` did → it is dated; treat as cold start if
@@ -244,7 +266,7 @@ skip list follows. **No `capture_thought` call until Levi approves.**
 
 ---
 
-## 8. Machine Block (agent door — strict mirror of §§1–6)
+## 8. Structured summary (optional — for tooling that prefers explicit fields; NOT a doctrinal mirror)
 
 ```json
 {
@@ -271,7 +293,7 @@ skip list follows. **No `capture_thought` call until Levi approves.**
     {"id": "D1", "decision": "Derive structure from first principles; sandbox found definitions", "why": "applying a found structure inherits its blind spots untested", "evidence": ["canonical FIBERR lacks a rationale section", "advisor admits it lacked the real definitions"], "alternatives_rejected": ["reuse FIBERR template as spine", "adopt advisor F/I/B/E/R/R"], "risk": "careless derivation reinvents a worse wheel", "reentry_instruction": "re-derive before restructuring; do not import a template"},
     {"id": "D2", "decision": "Rationale is a first-class section", "why": "structure classifies context but does not guarantee recovery of causal why", "evidence": ["FIBERR preserves state not rationale", "this session's failure was lost reentry context not lost artifacts"], "alternatives_rejected": ["leave rationale implicit (the status quo that failed)"], "risk": "rationale bloats into chain-of-thought", "reentry_instruction": "answers to 'why this way' must live here, not be inferred"},
     {"id": "D3", "decision": "Record rationale as evidence, not instruction", "why": "session memory should not issue commands it lacks authority for", "evidence": ["agent-memory guidance: evidence over instruction", "ECOS propose-not-execute"], "alternatives_rejected": ["store directives", "store full reasoning transcripts"], "risk": "under-specified evidence forces re-derivation", "reentry_instruction": "treat as overridable findings, not orders"},
-    {"id": "D4", "decision": "Two representations: human prose + machine block", "why": "reentry agent type (human/machine) is unknown", "evidence": ["found Two-Door principle", "advisor Two-Doors", "independent derivation"], "alternatives_rejected": ["prose-only", "json-only"], "risk": "representations drift apart", "reentry_instruction": "update both together; prose=intent, json=structure"},
+    {"id": "D4", "decision": "Dual legibility: one well-structured artifact navigable by both human and agent (not duplicated representations)", "why": "Open Brain dual-legibility standard b06540db says one well-written entry satisfies both audiences; Two-Door e741ab2c is about access mechanism not content duplication; prior 'two representations' framing was a misreading", "evidence": ["thought b06540db (dual legibility)", "thought e741ab2c (Two-Door)", "Levi correction 2026-05-28"], "alternatives_rejected": ["two-block prose+JSON mirror (prior incorrect formulation)", "unstructured prose blob"], "risk": "reverting to undisciplined prose or to duplicated-block drift", "reentry_instruction": "structure for navigability by both audiences; if writing a parallel JSON mirror, check whether propagating the old misreading"},
     {"id": "D5", "decision": "Durable memory = atoms shed from source doc", "why": "a monolithic doc is retrieval-invisible at scale", "evidence": ["atomization standard", "advisor atomic-thoughts"], "alternatives_rejected": ["store whole record as one memory unit"], "risk": "over-atomization fragments one idea", "reentry_instruction": "capture atoms individually; keep doc as reference"},
     {"id": "D6", "decision": "Name it SRR; leave SRR-vs-FIBERR open", "why": "derived structure differs from canonical FIBERR; reusing the name corrupts vocabulary", "evidence": ["derivation vs FIBERR template sections"], "alternatives_rejected": ["call it FIBERR", "redefine FIBERR"], "risk": "near-synonyms proliferate", "reentry_instruction": "reconciliation owned by Levi"},
     {"id": "D7", "decision": "Record lives in vault repo ECOS under ECOS-PROJECTS/", "why": "vault = documents; this is a document", "evidence": ["repo split fact"], "alternatives_rejected": ["ECOS-build", "scratch location"], "risk": "low", "reentry_instruction": "keep reentry records under ECOS-PROJECTS/"}
@@ -313,5 +335,6 @@ skip list follows. **No `capture_thought` call until Levi approves.**
 ---
 
 *Reentry order: read §0 (the bar) → §1 (what's true now) → §2 (why) → §3 (edges) → §4 (where) →
-§5 (what next / what not) → §6 (what could break). Parse §8 if you are a machine. §7 captures
-only after Levi approves.*
+§5 (what next / what not) → §6 (what could break). §8 is an *optional* structured summary;
+use it if your tooling prefers explicit fields, but the prose above already satisfies dual
+legibility. §7 captures only after Levi approves.*
