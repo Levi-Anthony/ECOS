@@ -254,13 +254,13 @@ skip list follows. **No `capture_thought` call until Levi approves.**
    ECOS main (0dfa63c) while HANDOFF.md remained at the 2026-05-06 ECB-architecture state —
    demonstrating that filesystem-markdown handoff drifts out of sync with shipped work."
    — overlaps existing thought `b323e241`; per no-dedup-gate, keep as a sharper sample.
-5. *(struct)* "A reentry artifact's structure can be derived from first principles by
-   listing each thing a future worker can't recover from the session alone — current state,
-   the causal why behind choices, the edges of what's settled, where things physically
-   live, what's queued, what could silently go wrong — and adding one component per loss,
-   plus two transport principles: dual legibility (one well-structured entry navigable by
-   both audiences) and atomicity (durable memory as atoms shed from the source, not the
-   source stored whole)." — the derivation itself, reusable.
+5. *(struct)* "To design an artifact that lets a future worker resume after a session ends,
+   build it section by section. Each section answers one specific thing the worker cannot
+   recover from the session alone: the current state of the work; why each decision was
+   made; what is settled and what is still open; where the files and records live; what is
+   queued next; and what could silently go wrong. One section per recovery gap — no more,
+   no fewer. The artifact then carries exactly what the session itself would not preserve."
+   — the derivation method, standalone and reusable.
 
 **Skip list (proposed NOT to capture, with reason):**
 - Repo split (`ECOS`=vault / `ECOS-build`=infra): already captured as `c677c5b8`; skip unless a
@@ -329,7 +329,7 @@ skip list follows. **No `capture_thought` call until Levi approves.**
     {"signal": "framework", "claim": "session-authored memory should be evidence (decisions/lessons/constraints/failures/next-steps/source-refs), not instruction or chain-of-thought"},
     {"signal": "framework", "claim": "durable memory is atoms shed from a bounded source document, never the whole document stored as one unit"},
     {"signal": "observation", "claim": "curriculum shipped to ECOS main (0dfa63c) while HANDOFF.md stayed at 2026-05-06, showing filesystem-markdown handoff drifts from shipped work", "overlaps": "b323e241"},
-    {"signal": "struct", "claim": "a reentry artifact's structure is derivable by listing each thing a future worker can't recover from the session alone (current state, causal why behind choices, settled-vs-open edges, locational map, open queues, fragility) and adding one component per loss, plus two transport principles: dual legibility (one well-structured entry navigable by both audiences) and atomicity (durable memory as atoms shed from the source, not the source stored whole)"}
+    {"signal": "struct", "claim": "To design an artifact that lets a future worker resume after a session ends, build it section by section. Each section answers one specific thing the worker cannot recover from the session alone: the current state of the work; why each decision was made; what is settled and what is still open; where the files and records live; what is queued next; and what could silently go wrong. One section per recovery gap — no more, no fewer. The artifact then carries exactly what the session itself would not preserve."}
   ],
   "capture_status": "PROPOSED_ONLY_AWAITING_APPROVAL"
 }
