@@ -255,9 +255,12 @@ skip list follows. **No `capture_thought` call until Levi approves.**
    demonstrating that filesystem-markdown handoff drifts out of sync with shipped work."
    — overlaps existing thought `b323e241`; per no-dedup-gate, keep as a sharper sample.
 5. *(struct)* "A reentry artifact's structure can be derived from first principles by
-   enumerating what a session destroys (current state, causal why, boundaries, location, forward
-   vector, fragility) and adding one component per loss, plus two-representation and atomicity
-   transport principles." — the derivation itself, reusable.
+   listing each thing a future worker can't recover from the session alone — current state,
+   the causal why behind choices, the edges of what's settled, where things physically
+   live, what's queued, what could silently go wrong — and adding one component per loss,
+   plus two transport principles: dual legibility (one well-structured entry navigable by
+   both audiences) and atomicity (durable memory as atoms shed from the source, not the
+   source stored whole)." — the derivation itself, reusable.
 
 **Skip list (proposed NOT to capture, with reason):**
 - Repo split (`ECOS`=vault / `ECOS-build`=infra): already captured as `c677c5b8`; skip unless a
@@ -326,7 +329,7 @@ skip list follows. **No `capture_thought` call until Levi approves.**
     {"signal": "framework", "claim": "session-authored memory should be evidence (decisions/lessons/constraints/failures/next-steps/source-refs), not instruction or chain-of-thought"},
     {"signal": "framework", "claim": "durable memory is atoms shed from a bounded source document, never the whole document stored as one unit"},
     {"signal": "observation", "claim": "curriculum shipped to ECOS main (0dfa63c) while HANDOFF.md stayed at 2026-05-06, showing filesystem-markdown handoff drifts from shipped work", "overlaps": "b323e241"},
-    {"signal": "struct", "claim": "a reentry artifact structure is derivable by enumerating what a session destroys and adding one component per loss plus two-representation and atomicity transport principles"}
+    {"signal": "struct", "claim": "a reentry artifact's structure is derivable by listing each thing a future worker can't recover from the session alone (current state, causal why behind choices, settled-vs-open edges, locational map, open queues, fragility) and adding one component per loss, plus two transport principles: dual legibility (one well-structured entry navigable by both audiences) and atomicity (durable memory as atoms shed from the source, not the source stored whole)"}
   ],
   "capture_status": "PROPOSED_ONLY_AWAITING_APPROVAL"
 }
