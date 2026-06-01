@@ -1,7 +1,7 @@
 # Calibration Gallery
 
 The cure for confident bad habits. Self-study fails when you can't tell whether your work is
-any good. This file gives you a standard to compare against: model-answer snippets for the
+any good. This file gives you a standard to compare against: model-answer snippets for key
 early days, strong-vs-weak samples for the high-leverage days, and a bad→better→why appendix.
 
 **How to use:** do the day's exercise *first*, on your own. Only then open the matching entry
@@ -15,6 +15,7 @@ grain? build something tidy but useless?
 3. **CE:** Is there a real case with no home?
 4. **Grain:** Are branches at the same level of detail?
 5. **Usefulness:** Would this structure change what I investigate, decide, or do next?
+
 ---
 
 ## Part A — Model-answer snippets for key early days
