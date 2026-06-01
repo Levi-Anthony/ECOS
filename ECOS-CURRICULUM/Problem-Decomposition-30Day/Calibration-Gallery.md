@@ -10,12 +10,19 @@ grain? build something tidy but useless?
 
 ---
 
-## Part A — Model-answer snippets (Days 1–14)
+## Part A — Model-answer snippets for key early days
 
 ### Day 2 — MECE expense categories
-*Strong (by function, MECE):* Housing · Food · Transport · Health · Discretionary · Savings.
-Every dollar lands in exactly one. *Common slip:* adding "Amazon" as a category — that's a
-*vendor*, not a function, so it overlaps every other bucket.
+
+*Strong (by function, MECE):* Housing · Food · Transport · Health · Discretionary · Savings/debt/taxes.
+
+Every dollar or outflow should land in exactly one bucket.
+
+*Why strong:* the categories all answer the same question: “What function did this dollar serve?”
+
+*Common slip:* adding “Amazon” as a category. That is a *vendor*, not a function, so it overlaps with food, household goods, subscriptions, gifts, and almost anything else bought through Amazon.
+
+*Repair move:* if a transaction fits two buckets or none, do not just force it in. Use the edge case to rename, split, merge, or clarify the buckets.
 
 ### Day 3 — Two cuts of the same problem ("grow studio revenue")
 *Algebraic cut:* Revenue = students × avg. monthly spend × months retained.
@@ -34,6 +41,20 @@ Losing money
     └── Variable (ingredients, hourly labor, waste)
 ```
 *Strong because:* algebraic cut, MECE, two levels, every branch measurable.
+
+### Day 6 — Useful vs. merely MECE
+
+**Problem:** “Why are trial students not converting to paid students?”
+
+*Weak but MECE:* Students by last name: A–F · G–L · M–R · S–Z.
+
+This is mutually exclusive and collectively exhaustive, but useless for the decision.
+
+*Stronger:* Awareness problem · Trial experience problem · Offer/pricing problem · Follow-up problem · Fit/intent problem.
+
+*Why strong:* the branches point to different actions. If the issue is trial experience, improve the class. If it is follow-up, fix the sales process. If it is fit, change targeting.
+
+**Calibration point:** MECE is a hygiene test. Usefulness is the real test.
 
 ### Day 8 — Profit decomposition
 Profit = Revenue − Cost; Revenue = Volume × Price; Cost = Fixed + Variable. The strong version
