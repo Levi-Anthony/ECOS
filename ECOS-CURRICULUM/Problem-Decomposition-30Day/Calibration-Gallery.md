@@ -8,6 +8,13 @@ early days, strong-vs-weak samples for the high-leverage days, and a bad→bette
 here. Compare structure, not wording. Ask: did I miss a branch? overlap? cut at the wrong
 grain? build something tidy but useless?
 
+**What to compare against:**
+
+1. **Cut:** Did I choose one organizing principle?
+2. **ME:** Can one item land in two branches?
+3. **CE:** Is there a real case with no home?
+4. **Grain:** Are branches at the same level of detail?
+5. **Usefulness:** Would this structure change what I investigate, decide, or do next?
 ---
 
 ## Part A — Model-answer snippets for key early days
