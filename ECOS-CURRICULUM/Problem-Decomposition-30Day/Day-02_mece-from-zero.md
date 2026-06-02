@@ -171,3 +171,112 @@ Then run the same filing test on ten real examples.
 
 ---
 *Calibration:* compare against **Day 2** in `Calibration-Gallery.md` (Part A).
+
+---
+# Day 2 — MECE From Zero: Lessonized Version
+
+Day 2 is about learning the difference between “a list of things” and “a structure you can reason from.”
+
+That sounds simple, but it is a big move. Most people think they are organizing when they make a list. They write down rent, food, Amazon, subscriptions, travel, big purchases, and it feels like they have made progress because the mess is no longer floating around in their head. But what they really have is a pile with labels on it. It may feel cleaner, but it may not yet be logically usable.
+
+MECE is the test that tells you whether the pile has become a real structure.
+
+MECE means mutually exclusive and collectively exhaustive. Those are stiff consulting words, but the actual idea is plain: every real thing should have one home, and only one home.
+
+If something belongs in two categories, the categories overlap. If something belongs in no category, the categories have a gap. A clean structure gives every real example exactly one place to go.
+
+The drawer test is doing important work here. Imagine you are sorting socks. If one sock could go into two drawers, your drawer labels are not clear enough. If one sock fits no drawer at all, your system is incomplete. A good sorting system is not just tidy-looking. It makes the next decision easier because you do not have to re-argue where each thing belongs.
+
+That is why MECE matters. Overlap makes you double-count and argue in circles. Gaps make you miss things. And both problems are dangerous because they hide inside lists that look reasonable.
+
+The deeper lesson in Day 2 is this: MECE is not mainly about inventing better category names. It is about choosing one organizing principle and staying loyal to it.
+
+That phrase, “organizing principle,” is the key.
+
+An organizing principle is the question your categories are answering. For expenses, you could ask, “What life function did this expense serve?” That gives you categories like housing, food, transportation, health, work, entertainment, debt, taxes, and fees.
+
+But you could also ask, “Where did I buy it?” That gives you vendor categories like Amazon, Safeway, Apple, Costco, or Spotify.
+
+You could ask, “How often does it happen?” That gives you recurring, occasional, annual, and one-time expenses.
+
+You could ask, “How much did it cost?” That gives you small, medium, and large purchases.
+
+Any of those can be useful. The mistake is mixing them on the same level.
+
+That is what is wrong with the bad example: rent, food, Amazon, big purchases, subscriptions, travel.
+
+Rent and food are functions. Amazon is a vendor. Big purchases is an amount. Subscriptions is a frequency or payment structure. Travel is a function or activity type. The list is not wrong because those are bad words. It is wrong because they are answering different questions at the same time.
+
+That creates overlap immediately. A purchase could be a big Amazon purchase. Or an Amazon subscription. Or food bought through Amazon. The item is not the problem. The structure is the problem.
+
+The better version uses function as the cut. Housing. Food and groceries. Transportation. Health and personal care. Work and education. Entertainment and subscriptions. Savings, debt, taxes, and fees.
+
+Now every category is answering the same question: what purpose did this expense serve?
+
+That does not make the structure perfect. And this is important. MECE work is not about pretending your first structure is final. It is about making the structure clean enough that reality can test it.
+
+That is why the practice case uses ten real purchases. Real examples are where fake clarity goes to die, and that is a good thing. You do not find the weakness in a structure by staring at the headings. You find it by filing actual cases.
+
+Take “restaurant dinner.” Where does it go? Food? Entertainment? Social life?
+
+There is no universal answer. The correct answer depends on the rule you choose. If your structure defines food as ordinary nourishment, then a restaurant dinner with friends might belong under entertainment or social life. If your structure defines food broadly as all meals, then it belongs under food. Either can work. What cannot work is deciding differently every time because the category names are vague.
+
+So the repair is not necessarily “add more buckets.” The repair might be writing a clearer filing rule.
+
+For example: food and groceries means ordinary meals and household food. Entertainment and social means recreational experiences, including restaurant meals where the main purpose was social or experiential.
+
+Now the ambiguous purchase has a home. More importantly, future purchases have a rule.
+
+This is the central skill: when reality pressures your structure, do not just shove the example somewhere and move on. Use the friction to improve the structure.
+
+If one purchase fits two buckets, you found overlap. Rename, split, or clarify the categories.
+
+If one purchase fits no bucket, you found a gap. Add a category or broaden one carefully.
+
+If one bucket becomes “Other” and starts collecting everything weird, that is not a category. That is a junk drawer pretending to be a category. A small “Other” bucket is fine for rare edge cases, but if more than about ten percent of your examples land there, the structure is telling you it does not understand the world you are asking it to sort.
+
+The most common Day 2 mistake is sneaking in a different axis because it feels practical. Amazon feels practical. Big purchases feels practical. Emergency expenses feels practical. But those are usually tags, not primary categories.
+
+A category gives the item its main home. A tag adds extra information.
+
+So “Amazon” might be a vendor tag. “Big purchase” might be an amount tag. “Recurring” might be a frequency tag. “Emergency” might be a priority or context tag. But if your primary structure is function-based, those tags do not belong as sibling categories next to housing, food, and transportation.
+
+This distinction matters way beyond budgeting.
+
+If you are organizing types of clients, sources of studio revenue, stages of music production, reasons projects get delayed, or ways customers discover you, the same failure appears. You start with a list that feels intuitive, but the list mixes type, source, size, priority, stage, and emotional salience. Then you try to reason from it, and everything gets mushy.
+
+MECE gives you the diagnostic question: are these categories answering one question, or several?
+
+Day 2’s minimum viable rep is deliberately small because the goal is not to become a consultant in one day. The goal is to build the reflex.
+
+Build a simple structure. Test it with ten real examples. Notice overlap, gaps, mixed axes, and weak “Other.” Repair one branch. Then explain why the structure helps.
+
+That last sentence matters:
+
+> This structure helps because…
+
+If you cannot finish that sentence, the structure may be clean but useless.
+
+This is where Day 2 quietly sets up Day 6. MECE is necessary, but not sufficient. You could sort expenses by the first letter of the vendor name: A through F, G through L, M through R, S through Z. That could be perfectly MECE. Every vendor has one first letter. No overlap, no gap.
+
+But it would be nearly useless for budgeting decisions.
+
+So the real standard is not merely “Does every item fit?” The deeper standard is:
+
+> Does every item fit in a way that helps me think?
+
+For today, though, keep the task narrow. Do not optimize the whole system. Just learn the clean filing test.
+
+Every real item should have exactly one useful home.
+
+That is Day 2. MECE from zero.
+
+## Summary
+
+Day 2 teaches that a useful breakdown needs one consistent organizing principle, not just plausible category names.
+
+The practice is to test a structure against real examples and repair the first defect reality exposes.
+
+The core mental model is:
+
+> One item, one useful home.
