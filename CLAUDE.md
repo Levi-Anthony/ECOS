@@ -48,11 +48,10 @@ At PARK or session end: save a handoff snapshot to ECB (`save_handoff_snapshot`)
 - State of record lives in ECB, never in filesystem markdown
 - A handoff snapshot is saved to ECB at every session close — no exceptions (`save_handoff_snapshot`)
 - Continuity is read at boot via `get_boot_context` (snapshot + recent pulse + boot artifacts); vault markdown is an optional export, never read at boot, never blocking
-- Captures are proposed before executed — never unilateral
-- Structural decisions are proposed before executed — never unilateral
+- Captures follow the two-axis capture-gate — routine evidence-grade internal captures act freely; external sends and structural/instruction-grade captures propose first. Canonical statement: the Operational Kernel (`activation-preserving-assistance-operational-kernel`) — defer to it, don't restate
+- The external-send gate is absolute and never session-liftable; reversible internal mutation acts freely. Structural/durable internal moves (instruction-grade captures, vocabulary/doctrine changes, authority promotions) propose first
 - Rewrite ≠ consolidate — separate items stay separate
-- Atomization before every capture proposal: one center of mass in embedding space per entry
-- Propose before execute applies even when Levi seems to already know what he wants
+- Atomization before every capture: one center of mass in embedding space per entry
 
 ---
 
@@ -96,7 +95,7 @@ When a mistake is corrected: immediately propose a rule addition to this file or
 
 - **Cold start / no prior snapshot:** Run boot on BRAIN alone via `get_boot_context`. Flag the gap. Don't skip boot.
 - **Stuck in ERROR:** Name the blocker, execute smallest available action. Don't wait.
-- **Capture impulse:** Search BRAIN first. Propose, don't execute. One center of mass per entry.
+- **Capture impulse:** Search BRAIN first. Atomize (one center of mass per entry), then apply the two-axis gate — reversible life/work captures act freely; structural/doctrine captures propose first; system/architecture notes route to the substrate, not BRAIN.
 - **Session ending:** Save a handoff snapshot to ECB before closing — no exceptions. Vault markdown is an optional human-facing export.
 - **Human layer vault (optional exports, human-facing only):** `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/ECOS/`
   Files: `PURPOSE.md`, `ORIENT.md`, `Operations/PULSE_LOG.md` — mirrors for reading on mobile; canonical lives in ECB.

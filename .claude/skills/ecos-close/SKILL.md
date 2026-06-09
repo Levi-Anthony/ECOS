@@ -29,25 +29,25 @@ Review what happened this session. Identify:
 Keep this inventory internal. Don't dump it on Levi unless he asks — it
 feeds into the handoff snapshot and capture proposal.
 
-### Step 2 — Propose BRAIN captures
+### Step 2 — Atomize + capture session learnings
 
 Extract candidate entries from the session's work. These are things worth
 retrieving in a future session — not session logistics or transient state.
 
-Before proposing, enforce atomization upstream in this exact order:
+Enforce atomization upstream, then apply the capture-gate, in this exact order:
 
 1. **Draft raw** — write candidate entries as they naturally surface.
 2. **Split to atomic** — apply the split test: would this retrieve well on two
    distinct semantic queries? If yes, it's two entries. Split before proceeding.
 3. **Verify C3 per fragment** — each fragment must be semantically complete in
    isolation. Would it mislead without its sibling? Rewrite or drop if so.
-4. **Propose** with a one-line rationale per entry (which criterion was
-   non-obvious and why it passes). Never capture unilaterally.
-5. **After approval:** capture, then present a skip list with reasons for any
-   entries not captured.
+4. **Apply the two-axis capture-gate** (canonical: the Operational Kernel — defer,
+   don't restate). Reversible evidence-grade life/work entries act freely. Structural/
+   instruction-grade entries (durable rules, vocabulary, doctrine, authority changes)
+   propose first. System/architecture notes route to the substrate, never BRAIN.
 
 Thematic drafting produces natural-feeling units that frequently violate C1.
-Do not let C1 violations surface to the proposal stage — catch them here.
+Do not let C1 violations surface — catch them here.
 
 Do not skip this step even when the session feels light. Sessions that feel
 light often contain exactly one non-obvious insight worth capturing.
@@ -55,11 +55,11 @@ light often contain exactly one non-obvious insight worth capturing.
 Do not re-derive or re-explain what C1 and C3 mean. The definitions live in
 the brain skill. If there's ambiguity, read that file — don't improvise.
 
-### Step 3 — Execute approved captures
+### Step 3 — Execute captures
 
-After Levi approves (or edits) the capture proposals:
-
-- Capture each approved entry via `capture_thought`
+- Capture reversible evidence-grade life/work entries directly via `capture_thought` (act-freely — no approval gate).
+- For any structural/instruction-grade entries staged in Step 2, capture only after Levi approves (or edits) them.
+- Surface any capture failure explicitly; never report success blind.
 
 ### Step 4 — List skips
 
