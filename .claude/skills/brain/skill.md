@@ -53,20 +53,23 @@ is deprecated.
 
 ## Capture Protocol
 
-Atomization is upstream of proposal — enforce this order:
+Atomization is upstream of capture — enforce this order:
 
 1. **Draft raw** — write candidate entries as they naturally surface.
 2. **Split to atomic** — apply the split test: would this retrieve well on two
-   distinct semantic queries? If yes, it's two entries. Split before proposing.
+   distinct semantic queries? If yes, it's two entries. Split before capture.
 3. **Verify C3 per fragment** — each fragment must be semantically complete in
    isolation. Would it mislead without its sibling? Rewrite or drop if so.
-4. **Propose** with a one-line rationale per entry (which criterion was
-   non-obvious and why it passes). Never capture unilaterally.
-5. **After approval:** capture, then present a skip list with reasons for any
-   entries not captured.
+4. **Apply the two-axis capture-gate** (canonical: the Operational Kernel — defer,
+   don't restate). Reversible evidence-grade life/work entries act freely — capture
+   them directly. Structural/instruction-grade entries (durable rules, vocabulary,
+   doctrine, authority changes) propose first. System/architecture/agent-behavior
+   notes route to the substrate, never BRAIN (BRAIN-scope gate).
+5. **Capture, then report** — present what landed plus a skip list with reasons for
+   any entries not captured. Surface any capture failure explicitly; never swallow it.
 
 Thematic drafting produces natural-feeling units that frequently violate C1.
-Catch them at step 2 — do not let C1 violations surface to the proposal stage.
+Catch them at step 2 — do not let C1 violations surface to capture.
 
 ## BRAIN Architecture
 

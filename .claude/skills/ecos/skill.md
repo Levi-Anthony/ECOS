@@ -58,8 +58,8 @@ At each transition, update the State Document.
 **Dispatcher invariants:**
 - BRAIN is always queried, never assumed
 - State Document is always read at boot, always updated at close
-- Captures are proposed before executed — never unilateral
-- Structural decisions are proposed before executed — never unilateral
+- Captures follow the two-axis capture-gate — reversible evidence-grade internal captures act freely; external sends and structural/instruction-grade captures propose first (canonical: the Operational Kernel — defer, don't restate)
+- External-send gate is absolute (never session-liftable); structural/durable internal moves propose first; system/architecture notes route to the substrate, not BRAIN
 - Rewrite ≠ consolidate — never collapse separate items
 
 ## Subsystem Invocation
